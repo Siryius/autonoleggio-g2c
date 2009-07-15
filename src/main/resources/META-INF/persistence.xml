@@ -1,0 +1,24 @@
+<persistence>
+	<persistence-unit name="tsw2">
+	<provider>org.hibernate.ejb.HibernatePersistence</provider>
+	<properties>
+		<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.jdbc2.optional.MysqlConnectionPoolDataSource" />
+		<property name="hibernate.connection.url" value="jdbc:mysql://localhost/tsw2" />
+		<property name="hibernate.connection.username" value="root" />
+		<property name="hibernate.connection.password" value="gio" />
+		<property name="hibernate.hbm2ddl.auto" value="update"/>
+		<property name="hibernate.archive.autodetection" value="hbm" /> 
+		<property name="hibernate.show_sql" value="true"/>
+		<property name="hibernate.format_sql" value="true"/>
+	
+	
+	<!--   <property name="mappingResources">
+  			<list>
+			<value>Optional.hbm.xml</value>
+			</list>
+		</property> -->
+		</properties> 
+	
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it_progetto_tsw2_hibernate.CartaCliente" table="CARTACLIENTE">
+	
+		<id name="id_cartaCliente" column="ID_">
+            <generator class="foreign">
+            	<param name="property">
+            		utente
+            	</param>
+            </generator>
+        </id>
+        
+		<property name="cartaCredito_cartaCliente" type="string" column="CARTACREDITO_CARTACLIENTE"/>
+		<property name="login" type="string" column="LOGIN"/>
+		<property name="password" type="string" column="PASSWORD"/>
+		<property name="tipologia_cartaCliente" type="string" column="TIPOLOGIA_CARTACLIENTE"/>
+		<property name="validita_cartaCliente" type="date" column="VALIDITA_CARTACLIENTE"/>
+			
+		
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<one-to-one name="utente" class="it_progetto_tsw2_hibernate.Utente" />
+        
+        	
+		
+	</class>
+</hibernate-mapping>

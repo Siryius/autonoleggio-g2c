@@ -1,0 +1,17 @@
+<projectDescription>
+  <name>autonoleggioG2C</name>
+  <comment>Struts 2 Starter</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+    <buildCommand>
+      <name>org.eclipse.iam.jdt.core.mavenIncrementalBuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.iam.jdt.core.mavenNature</nature>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
+</projectDescription>
