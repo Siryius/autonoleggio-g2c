@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.codebehind.defaultPackage" value="base-package" />
+	<constant name="struts.codebehind.pathPrefix" value="/jsp/" />
+
+	<package name="base-package" extends="struts-default">
+	
+	<default-interceptor-ref name="paramsPrepareParamsStack" />
+	
+	<global-results>
+            <result name="unknownError">/WEB-INF/jsp/error.jsp</result>
+        </global-results>
+        <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="unknownError" />
+            <exception-mapping exception="org.hibernate.exception.ConstraintViolationException" result="dupPK"></exception-mapping>
+        </global-exception-mappings>
+	
+	
+		<action name="login" class="it_progetto_tsw2.LoginAction">
+			<result>/jsp/login.jsp</result>
+		</action>
+		<action name="helloWorld" class="helloWorldAction"> 
+			<result name="error">/jsp/error.jsp</result>
+			<result name="success">/jsp/helloWorld.jsp</result>
+		</action>
+		
+		<action name="searchOptional" class="it_progetto_tsw2.SearchOptionalAction"> 
+			<result name="success" type="dispatcher">/jsp/searchOptional.jsp</result>
+		</action>
+		
+		<action name="campiOptional" class="it_progetto_tsw2.CampiOptionalAction">
+			<result name="success" type="dispatcher">/jsp/campiOptional.jsp</result>
+		</action>
+		
+		<action name="newOptional" class="it_progetto_tsw2.NewOptionalAction" >
+			<result name="success" type="dispatcher">/jsp/newOptional.jsp</result>
+		</action>
+		
+		<action name="deleteOptional" class="it_progetto_tsw2.DeleteOptionalAction"> 
+			<result name="success">/jsp/allOptional.jsp</result>
+		</action>
+		
+		<action name="updateOptional" class="it_progetto_tsw2.UpdateOptionalAction"> 
+			<result name="success">/jsp/allOptional.jsp</result>
+		</action>
+		
+		<action name="allOptional" class="it_progetto_tsw2.AllOptionalAction"> 
+			<result name="success" type="dispatcher">/jsp/allOptional.jsp</result>
+		</action>
+	
+		
+		
+		
+	</package>
+</struts>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it_progetto_tsw2_hibernate.Promozione" table="PROMOZIONE">
+	
+		<id name="id_promozione" column="ID_PROMOZIONE">
+			<generator class="native"/>
+		</id>
+		<property name="nome_promozione" type="string" column="NOME_PROMOZIONE"/>
+		<property name="descrizione_promozione" type="string" column="DESCRIZIONE_PROMOZIONE"/>
+		<property name="dataInizio_promozione" type="date" column="DATAINIZIO_PROMOZIONE"/>
+		<property name="dataFine_promozione" type="date" column="DATAFINE_PROMOZIONE"/>
+		<property name="sconto_promozione" type="integer" column="SCONTO_PROMOZIONE"/>
+			
+		
+		<!-- mappiamo ora le associazioni -->
+        
+        <set name="sedi" table="SEDE_PROMOZIONE" lazy="true" inverse="true" cascade="save-update">
+        	<key column="ID_PROMOZIONE"/>
+        	<many-to-many class="it_progetto_tsw2_hibernate.Promozione" column="ID_SEDE"/>
+        </set>
+        
+        	
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it_progetto_tsw2_hibernate.Veicolo" table="VEICOLO">
+	
+		<id name="id_veicolo" column="ID_VEICOLO">
+			<generator class="native"/>
+		</id>
+		<property name="nome_veicolo" type="string" column="NOME_VEICOLO"/>
+		<property name="tipo_veicolo" type="string" column="TIPO_VEICOLO"/>
+		<property name="descrizione_veicolo" type="string" column="DESCRIZIONE_VEICOLO"/>
+		<property name="nPosti_veicolo" type="integer" column="NPOSTI_VEICOLO"/>
+		<property name="cilindrata_veicolo" type="integer" column="CILINDRATA_VEICOLO"/>
+		<property name="disponibile_veicolo" type="true_false" column="DISPONIBILE_VEICOLO"/>
+		<property name="immatricolazione_veicolo" type="date" column="IMMATRICOLAZIONE_VEICOLO"/>
+		<property name="cambio_veicolo" type="string" column="CAMBIO_VEICOLO"/>
+		<property name="alimentazione_veicolo" type="string" column="ALIMENTAZIONE_VEICOLO"/>
+		<property name="portata_veicolo" type="integer" column="PORTATA_VEICOLO"/>
+		<property name="bagagliaio_veicolo" type="integer" column="BAGAGLIAIO_VEICOLO"/>
+		<property name="targa_veicolo" type="string" column="TARGA_VEICOLO"/>
+		
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<many-to-one name="categoria" column="FKID_CATEGORIA" class="it_progetto_tsw2_hibernate.Categoria" not-null="true"/>
+		<many-to-one name="sede" column="FKID_SEDE" class="it_progetto_tsw2_hibernate.Sede" not-null="true"/>
+		
+		<set name="prenotazioni" inverse="true">
+        	<key column="ID_VEICOLO"/>
+        	<one-to-many class="it_progetto_tsw2_hibernate.Prenotazione"/>
+        </set>
+        
+        <set name="pratiche" inverse="true">
+        	<key column="ID_VEICOLO"/>
+        	<one-to-many class="it_progetto_tsw2_hibernate.Pratiche"/>
+        </set>
+        
+        
+        <set name="optionals" table="VEICOLO_OPTIONAL" lazy="true" inverse="true" cascade="save-update">
+        	<key column="ID_VEICOLO"/>
+        	<many-to-many class="it_progetto_tsw2_hibernate.Veicolo" column="ID_OPTIONAL"/>
+        </set>
+        
+        	
+		
+	</class>
+</hibernate-mapping>
