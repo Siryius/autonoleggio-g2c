@@ -29,7 +29,11 @@
 			<result name="success">/jsp/helloWorld.jsp</result>
 		</action>
 		
-		<action name="searchOptional" class="it_progetto_tsw2.SearchOptionalAction"> 
+		<action name="allOptional" class="it_progetto_tsw2.AllOptionalAction"> 
+			<result name="success" >/jsp/allOptional.jsp</result>
+		</action>
+		
+		<action name="searchOptional" method="searchOptional" class="it_progetto_tsw2.ServiceOptionalAction"> 
 			<result name="success" type="dispatcher">/jsp/searchOptional.jsp</result>
 		</action>
 		
@@ -37,21 +41,19 @@
 			<result name="success" type="dispatcher">/jsp/campiOptional.jsp</result>
 		</action>
 		
-		<action name="newOptional" class="it_progetto_tsw2.NewOptionalAction" >
+		<action name="newOptional" method="insertOptional" class="it_progetto_tsw2.ServiceOptionalAction" >
 			<result name="success" type="dispatcher">/jsp/newOptional.jsp</result>
 		</action>
 		
-		<action name="deleteOptional" class="it_progetto_tsw2.DeleteOptionalAction"> 
+		<action name="deleteOptional" method="deleteOptional" class="it_progetto_tsw2.ServiceOptionalAction" > 
 			<result name="success">/jsp/allOptional.jsp</result>
 		</action>
 		
-		<action name="updateOptional" class="it_progetto_tsw2.UpdateOptionalAction"> 
+		<action name="updateOptional" method="updateOptional" class="it_progetto_tsw2.ServiceOptionalAction" > 
 			<result name="success">/jsp/allOptional.jsp</result>
 		</action>
 		
-		<action name="allOptional" class="it_progetto_tsw2.AllOptionalAction"> 
-			<result name="success" type="dispatcher">/jsp/allOptional.jsp</result>
-		</action>
+		
 	
 		
 		

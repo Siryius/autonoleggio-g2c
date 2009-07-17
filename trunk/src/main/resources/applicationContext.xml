@@ -9,9 +9,8 @@
    
     <bean id="baseAction" class="it_progetto_tsw2.BaseAction" singleton="false"/>
    	<bean id="baseOptionalAction" class="it_progetto_tsw2.BaseOptionalAction" singleton="false"/>
-    <bean id="newOptionalAction" class="it_progetto_tsw2.NewOptionalAction" singleton="false"/>	
-    <bean id="campiOptionalAction" class="it_progetto_tsw2.CampiOptionalAction" singleton="false"/>	
-    <bean id="updateOptionalAction" class="it_progetto_tsw2.UpdateOptionalAction" singleton="false"/>
+    <bean id="serviceOptionalAction" class="it_progetto_tsw2.ServiceOptionalAction" singleton="false"/>	
+
     <bean id="deleteOptionalAction" class="it_progetto_tsw2.DeleteOptionalAction" singleton="false"/>
     <bean id="allOptionalAction" class="it_progetto_tsw2.AllOptionalAction" singleton="false"/>
     <bean id="searchOptionalAction" class="it_progetto_tsw2.SearchOptionalAction" singleton="false"/>

@@ -12,37 +12,34 @@ import java.util.*;
 
 public class BaseOptionalAction extends BaseAction implements ModelDriven<Optional> , Preparable
 {
-	protected Optional optional;
-	
-	protected OptionalService service;
+	private Optional optional;
+	private OptionalService service=new OptionalServiceImpl();
 	
 	public Optional getModel()
 	{
 		return optional;
 	}
-	/*
+	
 	public Optional getOptional() {
 		return optional;
 	}
 	public void setOptional(Optional optional) {
 		this.optional = optional;
-	}*/
-	
+	}
 	
 	public void setOptionalService(OptionalService service) {
 		this.service = service;
 	}
 	
-	/*
 	public OptionalService getService()
 	{
 		return service;
 	}
-	*/
 	
 	
 	public void prepare() throws Exception 
 	{	
+		System.out.println("prepare \n");
 		optional = new Optional(); 
     }
 	
