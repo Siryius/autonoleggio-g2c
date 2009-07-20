@@ -24,7 +24,7 @@ public class ServiceOptionalAction extends BaseOptionalAction
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore in insertOptional");
+			System.out.println("ServiceOptionalAction Errore in insertOptional");
 			e.printStackTrace();
 		}
 		return SUCCESS;
@@ -41,7 +41,7 @@ public class ServiceOptionalAction extends BaseOptionalAction
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore in updateOptional");
+			System.out.println("ServiceOptionalAction Errore in updateOptional");
 			e.printStackTrace();
 		}
 		return SUCCESS;
@@ -58,7 +58,7 @@ public class ServiceOptionalAction extends BaseOptionalAction
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore in deleteOptional");
+			System.out.println("ServiceOptionalAction Errore in deleteOptional");
 			e.printStackTrace();
 		}
 		return SUCCESS;
@@ -70,14 +70,12 @@ public class ServiceOptionalAction extends BaseOptionalAction
 		OptionalService tmp_service=super.getService();
 		try
 		{
-			System.out.println("Ciao");
-			tmp_optional.setNome_optional("eee");
-			System.out.println(tmp_optional.getNome_optional());
 			tmp_optional=tmp_service.findByNome_optional(tmp_optional.getNome_optional());
+			super.setOptional(tmp_optional);
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore in searchOptional");
+			System.out.println("ServiceOptionalAction Errore in searchOptional");
 			e.printStackTrace();
 		}
 		return SUCCESS;

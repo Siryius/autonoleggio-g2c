@@ -39,8 +39,16 @@ public class BaseOptionalAction extends BaseAction implements ModelDriven<Option
 	
 	public void prepare() throws Exception 
 	{	
-		System.out.println("prepare \n");
-		optional = new Optional(); 
+		try
+		{
+			System.out.println("prepare \n");
+			optional = new Optional();
+		}
+		catch(Exception e)
+		{
+			System.out.println("BaseOptionalAction prepare");
+			e.printStackTrace();
+		}
     }
 	
 	

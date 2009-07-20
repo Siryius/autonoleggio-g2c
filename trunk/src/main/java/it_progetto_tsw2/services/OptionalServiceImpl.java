@@ -41,10 +41,10 @@ public class OptionalServiceImpl implements OptionalService
 			array_criteria.add(query_criteria);
 		
 			List list=this.findByCriteria(array_criteria);
-			//if(list.size()==1)
-			//{
-				optional=(Optional)list.get(1);
-			//}
+			if(list.size()!=0)
+			{
+				optional=(Optional)list.get(0);
+			}
 		}
 		catch(Exception e)
 		{
@@ -66,7 +66,7 @@ public class OptionalServiceImpl implements OptionalService
 				session = util.getSessionFactory().getCurrentSession();	
 				session.beginTransaction();
 				criteria= session.createCriteria(Optional.class);
-				for (int i=1;i<=criterias.size();++i)
+				for (int i=0;i<criterias.size();++i)
 				{
 					QueryCriteria criteria_query=(QueryCriteria)criterias.get(i);
 					if(criteria_query.getAttributo().equals("supplemento_optional"))
@@ -80,8 +80,8 @@ public class OptionalServiceImpl implements OptionalService
 				}	
 				
 				list=criteria.list();
+				System.out.println("Ok query \n");
 				session.getTransaction().commit();
-				//System.out.println(optional.getNome_optional());
 				//System.out.println(optional.getDescrizione_optional());
 				
 			}
@@ -113,6 +113,7 @@ public class OptionalServiceImpl implements OptionalService
 		}
 		catch(Exception e)
 		{
+			System.out.println("Errore OptionalServiceImpl persist");
 			e.printStackTrace();
 		}
 		return ris;
@@ -136,7 +137,10 @@ public class OptionalServiceImpl implements OptionalService
 				ris=false;
 		}
 		catch(Exception e)
-		{e.printStackTrace();}
+		{
+			System.out.println("Errore OptionalServiceImpl deleteOptional");
+			e.printStackTrace();
+		}
 	
 		return ris;
 	}
@@ -152,14 +156,20 @@ public class OptionalServiceImpl implements OptionalService
 			{
 				session = util.getSessionFactory().getCurrentSession();
 				session.beginTransaction();
-				session.merge(optional);
+				opt.setNome_optional(optional.getNome_optional());
+				opt.setDescrizione_optional(optional.getDescrizione_optional());
+				opt.setSupplemento_optional(optional.getSupplemento_optional());
+				session.saveOrUpdate(opt);
 				session.getTransaction().commit();
 			}
 			else
 				ris=false;
 			
 		}catch(Exception e)
-		{e.printStackTrace();}
+		{
+			System.out.println("Errore OptionalServiceImpl updateOptional");
+			e.printStackTrace();
+		}
 		
 		return ris;
 	}
@@ -178,6 +188,7 @@ public class OptionalServiceImpl implements OptionalService
 		}
 		catch(Exception e)
 		{
+			System.out.println("Errore OptionalServiceImpl findAllOptional");
 			e.printStackTrace();
 		}
 		return cri;
