@@ -11,9 +11,9 @@
 </head>
 <body>
 	<s:form action="searchOptional">
-		<s:textfield label="Nome" name="nome_optional" />
-		<s:textfield label="Descrizione" name="descrizione_optional" />
-		<s:textfield label="Supplemento" name="supplemento_optional" />
+		<s:textfield label="Nome" name="model.nome_optional" />
+		<s:textfield label="Descrizione" name="model.descrizione_optional" />
+		<s:textfield label="Supplemento" name="model.supplemento_optional" />
 		<s:submit value="Update" action="updateOptional"/>
 		<s:submit value="Delete" action="deleteOptional"/>
 	</s:form>

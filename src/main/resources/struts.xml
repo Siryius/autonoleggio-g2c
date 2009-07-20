@@ -10,7 +10,7 @@
 
 	<package name="base-package" extends="struts-default">
 	
-	<default-interceptor-ref name="paramsPrepareParamsStack" />
+	
 	
 	<global-results>
             <result name="unknownError">/WEB-INF/jsp/error.jsp</result>
@@ -42,15 +42,16 @@
 		</action>
 		
 		<action name="newOptional" method="insertOptional" class="it_progetto_tsw2.ServiceOptionalAction" >
-			<result name="success" type="dispatcher">/jsp/newOptional.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allOptional</result>
 		</action>
 		
 		<action name="deleteOptional" method="deleteOptional" class="it_progetto_tsw2.ServiceOptionalAction" > 
-			<result name="success">/jsp/allOptional.jsp</result>
+			<result name="success" type="redirectAction">allOptional</result>
 		</action>
 		
 		<action name="updateOptional" method="updateOptional" class="it_progetto_tsw2.ServiceOptionalAction" > 
-			<result name="success">/jsp/allOptional.jsp</result>
+			<result name="success" type="redirectAction">allOptional</result>
 		</action>
 		
 		
