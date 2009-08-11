@@ -20,21 +20,19 @@
             <exception-mapping exception="org.hibernate.exception.ConstraintViolationException" result="dupPK"></exception-mapping>
         </global-exception-mappings>
 	
-	
-		<action name="login" class="it_progetto_tsw2.LoginAction">
-			<result>/jsp/login.jsp</result>
-		</action>
-		<action name="helloWorld" class="helloWorldAction"> 
-			<result name="error">/jsp/error.jsp</result>
-			<result name="success">/jsp/helloWorld.jsp</result>
-		</action>
 		
-		<action name="allOptional" class="it_progetto_tsw2.AllOptionalAction"> 
+		<!-- Flusso Optional  -->
+		
+		<action name="allOptional" method="searchAllOptional" class="it_progetto_tsw2.ServiceOptionalAction"> 
 			<result name="success" >/jsp/allOptional.jsp</result>
 		</action>
 		
-		<action name="searchOptional" method="searchOptional" class="it_progetto_tsw2.ServiceOptionalAction"> 
-			<result name="success" type="dispatcher">/jsp/searchOptional.jsp</result>
+		<action name="searchOptionalByNome_optional" method="searchOptionalByNome_optional" class="it_progetto_tsw2.ServiceOptionalAction"> 
+			<result name="success" type="dispatcher">/jsp/searchOptionalByNome_optional.jsp</result>
+		</action>
+		
+		<action name="searchOptionalByExample" method="searchOptionalByExample" class="it_progetto_tsw2.ServiceOptionalAction"> 
+			<result name="success" type="dispatcher">/jsp/allOptional.jsp</result>
 		</action>
 		
 		<action name="campiOptional" class="it_progetto_tsw2.CampiOptionalAction">
@@ -53,6 +51,41 @@
 		<action name="updateOptional" method="updateOptional" class="it_progetto_tsw2.ServiceOptionalAction" > 
 			<result name="success" type="redirectAction">allOptional</result>
 		</action>
+		
+		<!-- END Flusso Optional  -->
+		
+		<!-- Flusso Categoria  -->
+		
+		<action name="allCategoria" method="searchAllCategoria" class="it_progetto_tsw2.ServiceCategoriaAction"> 
+			<result name="success" >/jsp/allCategoria.jsp</result>
+		</action>
+		
+		<action name="searchCategoriaByNome_categoria" method="searchCategoriaByNome_categoria" class="it_progetto_tsw2.ServiceCategoriaAction"> 
+			<result name="success" type="dispatcher">/jsp/searchCategoriaByNome_categoria.jsp</result>
+		</action>
+		
+		<action name="searchCategoriaByExample" method="searchCategoriaByExample" class="it_progetto_tsw2.ServiceCategoriaAction"> 
+			<result name="success" type="dispatcher">/jsp/allCategoria.jsp</result>
+		</action>
+		
+		<action name="campiCategoria" class="it_progetto_tsw2.CampiCategoriaAction">
+			<result name="success" type="dispatcher">/jsp/campiCategoria.jsp</result>
+		</action>
+		
+		<action name="newCategoria" method="insertCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allOptional</result>
+		</action>
+		
+		<action name="deleteCategoria" method="deleteCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" > 
+			<result name="success" type="redirectAction">allCategoria</result>
+		</action>
+		
+		<action name="updateCategoria" method="updateCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" > 
+			<result name="success" type="redirectAction">allCategoria</result>
+		</action>
+		
+		<!-- END Flusso Categoria  -->
 		
 		
 	

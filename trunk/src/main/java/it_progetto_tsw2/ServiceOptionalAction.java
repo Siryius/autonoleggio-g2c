@@ -10,6 +10,8 @@ import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 import it_progetto_tsw2_hibernate.*;
 import it_progetto_tsw2.services.*;
 
+import java.util.*;
+
 public class ServiceOptionalAction extends BaseOptionalAction 
 {
 	
@@ -36,7 +38,8 @@ public class ServiceOptionalAction extends BaseOptionalAction
 		OptionalService tmp_service=super.getService();
 		try
 		{
-			tmp_service.updateOptional(tmp_optional,tmp_optional.getNome_optional());
+			System.out.println("Update");
+			tmp_service.updateOptional(tmp_optional);
 			
 		}
 		catch(Exception e)
@@ -64,7 +67,7 @@ public class ServiceOptionalAction extends BaseOptionalAction
 		return SUCCESS;
 	}
 	
-	public String searchOptional() throws Exception 
+	public String searchOptionalByNome_optional() throws Exception 
 	{
 		Optional tmp_optional=super.getOptional();
 		OptionalService tmp_service=super.getService();
@@ -75,9 +78,54 @@ public class ServiceOptionalAction extends BaseOptionalAction
 		}
 		catch(Exception e)
 		{
-			System.out.println("ServiceOptionalAction Errore in searchOptional");
+			System.out.println("ServiceOptionalAction Errore in searchOptionalByNome_optional");
 			e.printStackTrace();
 		}
+		return SUCCESS;
+	}
+	
+	public String searchOptionalByExample() throws Exception 
+	{
+		Optional tmp_optional=super.getOptional();
+		OptionalService tmp_service=super.getService();
+		
+		Iterator tmp_optionalIterator=null;
+		try
+		{
+			List optional_search=tmp_service.findByExample(tmp_optional);
+			tmp_optionalIterator=optional_search.iterator();
+			super.setAllOptionIterator(tmp_optionalIterator);
+		}
+		catch(Exception e)
+		{
+			System.out.println("ServiceOptionalAction Errore in searchOptionalByExample");
+			e.printStackTrace();
+		}
+		return SUCCESS;
+	}
+	
+	public String searchAllOptional()
+	{
+		try
+		{
+			OptionalService tmp_service=super.getService();
+			Iterator tmp_optionalIterator=null;
+			
+			List result = tmp_service.findAllOptional();
+			tmp_optionalIterator=result.iterator();
+			super.setAllOptionIterator(tmp_optionalIterator);
+        
+        /*for (Iterator i= result.iterator();i.hasNext();)
+        {
+			Optional theEventTemp = (Optional)i.next();
+        }*/
+		}
+		catch(Exception e)
+		{
+			System.out.println("ServiceOptionalAction Errore in searchAllOptional");
+			e.printStackTrace();
+		}
+	
 		return SUCCESS;
 	}
 }

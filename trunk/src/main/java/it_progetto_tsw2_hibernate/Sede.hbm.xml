@@ -9,7 +9,7 @@
 		<id name="id_sede" column="ID_SEDE">
 			<generator class="native"/>
 		</id>
-		<property name="nome_sede" type="string" column="NOME_SEDE"/>
+		<property name="nome_sede" type="string" column="NOME_SEDE" unique="true" not-null="true"/>
 			
 		<!-- mappiamo ora le composizioni -->
 		

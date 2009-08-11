@@ -9,7 +9,7 @@
 		<id name="id_assicurazione" column="ID_ASSICURAZIONE">
 			<generator class="native"/>
 		</id>
-		<property name="nome_assicurazione" type="string" column="NOME_ASSICURAZIONE"/>
+		<property name="nome_assicurazione" type="string" column="NOME_ASSICURAZIONE" unique="true" not-null="true"/>
 		<property name="descrizione_assicurazione" type="string" column="DESCRIZIONE_ASSICURAZIONE"/>
 		<property name="costo_assicurazione" type="integer" column="COSTO_ASSICURAZIONE"/>
 		

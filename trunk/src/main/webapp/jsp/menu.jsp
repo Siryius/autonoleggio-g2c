@@ -12,6 +12,7 @@
 <body>
 	Menu
 	<a href="allOptional.action"> Optional </a>
+	<a href="allCategoria.action"> Categoria </a>
 
 </body>
 </html>

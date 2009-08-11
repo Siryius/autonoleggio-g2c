@@ -6,11 +6,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>New Optional</title>
+	<title>Optional</title>
 	<s:head />
 </head>
 <body>
-	<s:form action="searchOptional">
+	<s:form >
+		<s:textfield label="ID" name="model.id_optional"/>
 		<s:textfield label="Nome" name="model.nome_optional" />
 		<s:textfield label="Descrizione" name="model.descrizione_optional" />
 		<s:textfield label="Supplemento" name="model.supplemento_optional" />

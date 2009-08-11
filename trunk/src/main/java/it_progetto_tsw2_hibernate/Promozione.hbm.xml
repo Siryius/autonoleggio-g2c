@@ -9,7 +9,7 @@
 		<id name="id_promozione" column="ID_PROMOZIONE">
 			<generator class="native"/>
 		</id>
-		<property name="nome_promozione" type="string" column="NOME_PROMOZIONE"/>
+		<property name="nome_promozione" type="string" column="NOME_PROMOZIONE" unique="true" not-null="true"/>
 		<property name="descrizione_promozione" type="string" column="DESCRIZIONE_PROMOZIONE"/>
 		<property name="dataInizio_promozione" type="date" column="DATAINIZIO_PROMOZIONE"/>
 		<property name="dataFine_promozione" type="date" column="DATAFINE_PROMOZIONE"/>

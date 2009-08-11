@@ -11,7 +11,7 @@ public class Prenotazione
 	private float oraArrivo_prenotazione;
 
 	private Noleggio noleggio;
-	private CartaCliente cartaCliente;
+	private Cliente cliente;
 	private Veicolo veicolo;
 	private Set<Sede> sedi=new HashSet();
 	private Set<Assicurazione> assicurazioni=new HashSet();
@@ -46,12 +46,7 @@ public class Prenotazione
 	public void setOraArrivo_prenotazione(float oraArrivo_prenotazione) {
 		this.oraArrivo_prenotazione = oraArrivo_prenotazione;
 	}
-	public CartaCliente getCartaCliente() {
-		return cartaCliente;
-	}
-	public void setCartaCliente(CartaCliente cartaCliente) {
-		this.cartaCliente = cartaCliente;
-	}
+	
 	public Veicolo getVeicolo() {
 		return veicolo;
 	}
@@ -75,6 +70,12 @@ public class Prenotazione
 	}
 	public void setNoleggio(Noleggio noleggio) {
 		this.noleggio = noleggio;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 }

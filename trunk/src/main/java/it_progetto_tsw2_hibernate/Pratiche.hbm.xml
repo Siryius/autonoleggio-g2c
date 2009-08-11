@@ -9,7 +9,7 @@
 		<id name="id_pratiche" column="ID_PRATICHE">
 			<generator class="native"/>
 		</id>
-		<property name="nome_pratiche" type="string" column="NOME_PRATICHE"/>
+		<property name="nome_pratiche" type="string" column="NOME_PRATICHE" unique="true" not-null="true"/>
 		<property name="descrizione_pratiche" type="string" column="DESCRIZIONE_PRATICHE"/>
 		<property name="scadenza_pratiche" type="date" column="COSTO_PRATICHE"/>
 		
