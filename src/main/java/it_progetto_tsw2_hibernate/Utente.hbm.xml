@@ -9,9 +9,12 @@
 		<id name="id_utente" column="ID_UTENTE">
 			<generator class="native"/>
 		</id>
-		<property name="CF_utente" type="string" column="CF_UTENTE"/>
+		<property name="CF_utente" type="string" column="CF_UTENTE" unique="true" not-null="true"/>
 		<property name="nome_utente" type="string" column="NOME_UTENTE"/>
 		<property name="cognome_utente" type="string" column="COGNOME_UTENTE"/>
+		
+		<property name="login_utente" type="string" column="LOGIN"/>
+		<property name="password_utente" type="string" column="PASSWORD"/>
 			
 		<!-- mappiamo ora le composizioni -->
 		
@@ -24,9 +27,26 @@
 			<property name="provincia" type="string" column="PROVINCIA"/>	
 		</component>
 		
-		<!-- mappiamo ora le associazioni -->
+		<!--Sotto classi -->
 		
-		<one-to-one name="cartaCliente" class="it_progetto_tsw2_hibernate.CartaCliente" cascade="save-update" />
+		<joined-subclass name="it_progetto_tsw2_hibernate.Staff" table="STAFF">
+			<key column="ID_STAFF"/>
+			<property name="competenza" type="string" column="COMPETENZA" not-null="true"/>
+		</joined-subclass>
+		
+		<joined-subclass name="it_progetto_tsw2_hibernate.Cliente" table="CLIENTE">
+			<key column="ID_CLIENTE"/>
+			
+			<property name="cartaCredito_cliente" type="string" column="CARTACREDITO_CARTACLIENTE"/>
+			<property name="tipologia_cliente" type="string" column="TIPOLOGIA_CLIENTE"/>
+			<property name="validita_cliente" type="date" column="VALIDITA_CLIENTE"/>
+			
+			<set name="prenotazioni" inverse="true">
+        		<key column="ID_CLIENTE"/>
+        		<one-to-many class="it_progetto_tsw2_hibernate.Prenotazione"/>	
+        	</set>
+			
+		</joined-subclass>
         	
 		
 	</class>

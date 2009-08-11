@@ -13,7 +13,9 @@ import java.util.*;
 public class BaseOptionalAction extends BaseAction implements ModelDriven<Optional> , Preparable
 {
 	private Optional optional;
-	private OptionalService service=new OptionalServiceImpl();
+	private OptionalService service;
+	private Iterator allOptionIterator;
+	
 	
 	public Optional getModel()
 	{
@@ -36,6 +38,14 @@ public class BaseOptionalAction extends BaseAction implements ModelDriven<Option
 		return service;
 	}
 	
+	public Iterator getAllOptionIterator() {
+		return allOptionIterator;
+	}
+
+	
+	public void setAllOptionIterator(Iterator allOptionIterator) {
+		this.allOptionIterator = allOptionIterator;
+	}
 	
 	public void prepare() throws Exception 
 	{	
@@ -43,6 +53,7 @@ public class BaseOptionalAction extends BaseAction implements ModelDriven<Option
 		{
 			System.out.println("prepare \n");
 			optional = new Optional();
+			service = new OptionalServiceImpl();
 		}
 		catch(Exception e)
 		{

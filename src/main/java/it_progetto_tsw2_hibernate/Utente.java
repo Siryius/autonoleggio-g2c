@@ -6,9 +6,10 @@ public class Utente
 	private String CF_utente;
 	private String nome_utente;
 	private String cognome_utente;
+	private String login_utente;
+	private String password_utente;
 	private Indirizzo indirizzo_utente;
 	
-	private CartaCliente cartaCliente;
 	
 	public Long getId_utente() {
 		return id_utente;
@@ -40,12 +41,19 @@ public class Utente
 	public void setIndirizzo_utente(Indirizzo indirizzo_utente) {
 		this.indirizzo_utente = indirizzo_utente;
 	}
-	public CartaCliente getCartaCliente() {
-		return cartaCliente;
+	public String getLogin_utente() {
+		return login_utente;
 	}
-	public void setCartaCliente(CartaCliente cartaCliente) {
-		this.cartaCliente = cartaCliente;
+	public void setLogin_utente(String loginUtente) {
+		login_utente = loginUtente;
 	}
+	public String getPassword_utente() {
+		return password_utente;
+	}
+	public void setPassword_utente(String passwordUtente) {
+		password_utente = passwordUtente;
+	}
+
 
 
 }

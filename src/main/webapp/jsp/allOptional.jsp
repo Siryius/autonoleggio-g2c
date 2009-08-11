@@ -10,6 +10,13 @@
 	<s:head />
 </head>
 <body>
+	
+	<s:form name="ricerca_form" action="searchOptionalByExample">
+		<s:textfield  name="nome_optional" label="Nome"/>
+		<s:textfield  name="descrizione_optional" label="Descrizione"/>
+		<s:textfield  name="supplemento_optional" label="Supplemento"/>
+		<s:submit key="ricerca" value="Ricerca"/>
+	</s:form>
 
 	<table border="1">
 	<tr><th> </th> <th>Nome</th> <th>Descrizione</th> <th>Supplemento</th><th></th> </tr>
@@ -17,11 +24,11 @@
 		
 		<tr> 
 			<td>
-				<s:url id="searchOptional" action="searchOptional">
+				<s:url id="searchOptionalByNome_optional" action="searchOptionalByNome_optional">
 					<s:param name="nome_optional" value="nome_optional"> <s:property value="nome_optional" /></s:param>
 				</s:url>
 				
-				<s:a href="%{searchOptional}"> <img src="../images/info.png" WIDTH="30" HEIGHT="30"/> </s:a> 
+				<s:a href="%{searchOptionalByNome_optional}"> <img src="../images/info.png" WIDTH="30" HEIGHT="30"/> </s:a> 
 			</td>
 			
 			<td> <s:property value="nome_optional"/>  </td> 
@@ -37,10 +44,6 @@
 		</tr>
 	</s:iterator>
 	</table>
-	
-	
-	
-	
 	
 	<input type="button" value="New Optional" onclick="javascript:location.href='/autonoleggioG2C/jsp/campiOptional.action'" />
 	

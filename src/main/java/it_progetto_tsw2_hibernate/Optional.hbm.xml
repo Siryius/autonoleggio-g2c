@@ -9,7 +9,7 @@
 		<id name="id_optional" column="ID_OPTIONAL">
 			<generator class="native"/>
 		</id>
-		<property name="nome_optional" type="string" column="NOME_OPTIONAL" not-null="true"/>
+		<property name="nome_optional" type="string" column="NOME_OPTIONAL" unique="true" not-null="true" />
 		<property name="descrizione_optional" type="string" column="DESCRIZIONE_OPTIONAL"/>
 		<property name="supplemento_optional" type="float" column="SUPPLEMENTO_OPTIONAL"/>
 		

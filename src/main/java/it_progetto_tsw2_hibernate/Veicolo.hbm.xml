@@ -9,7 +9,7 @@
 		<id name="id_veicolo" column="ID_VEICOLO">
 			<generator class="native"/>
 		</id>
-		<property name="nome_veicolo" type="string" column="NOME_VEICOLO"/>
+		<property name="nome_veicolo" type="string" column="NOME_VEICOLO" unique="true" not-null="true"/>
 		<property name="tipo_veicolo" type="string" column="TIPO_VEICOLO"/>
 		<property name="descrizione_veicolo" type="string" column="DESCRIZIONE_VEICOLO"/>
 		<property name="nPosti_veicolo" type="integer" column="NPOSTI_VEICOLO"/>

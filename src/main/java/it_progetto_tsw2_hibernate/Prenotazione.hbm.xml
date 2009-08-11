@@ -9,7 +9,7 @@
 		<id name="id_prenotazione" column="ID_PRENOTAZIONE">
 			<generator class="native"/>
 		</id>
-		<property name="partenza_prenotazione" type="date" column="PARTENZA_PRENOTAZIONE"/>
+		<property name="partenza_prenotazione" type="date" column="PARTENZA_PRENOTAZIONE" unique="true" not-null="true"/>
 		<property name="arrivo_prenotazione" type="date" column="ARRIVO_PRENOTAZIONE"/>
 		<property name="oraPartenza_prenotazione" type="float" column="ORAPARTENZA_PRENOTAZIONE"/>
 		<property name="oraArrivo_prenotazione" type="float" column="ORAARRIVO_PRENOTAZIONE"/>
@@ -20,7 +20,7 @@
 		
 		<one-to-one name="noleggio" class="it_progetto_tsw2_hibernate.Noleggio" cascade="save-update" />
 		<many-to-one name="veicolo" column="FKID_VEICOLO" class="it_progetto_tsw2_hibernate.Veicolo" not-null="true"/>
-		<many-to-one name="cartaCliente" column="FKID_CARTACLIENTE" class="it_progetto_tsw2_hibernate.CartaCliente" not-null="true"/>
+		<many-to-one name="cliente" column="FKID_CLIENTE" class="it_progetto_tsw2_hibernate.Cliente" not-null="true"/>
         
         <set name="assicurazioni" inverse="true">
         	<key column="ID_PRENOTAZIONE"/>

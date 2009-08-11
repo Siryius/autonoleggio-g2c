@@ -43,27 +43,8 @@ public class TestManager
 	        utente.setNome_utente("Claudio");
 	        utente.setIndirizzo_utente(utenteInd);
 	        
-	        CartaCliente cartaCliente=new CartaCliente();
-	        cartaCliente.setCartaCredito_cartaCliente("054030");
-	        cartaCliente.setLogin("pippo");
-	        cartaCliente.setPassword("pluto");
-	        
-	  
-	        
-	        utente.setCartaCliente(cartaCliente);
-	        cartaCliente.setUtente(utente);
-	        
 	        session.save(utente);
-	        session.save(cartaCliente);
-	       
-	        
-
 	        session.getTransaction().commit();
 	    }
 	    
-	   
-
-
-
-
 }

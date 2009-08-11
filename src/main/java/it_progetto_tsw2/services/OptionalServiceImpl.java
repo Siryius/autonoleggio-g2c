@@ -30,6 +30,8 @@ public class OptionalServiceImpl implements OptionalService
 		util=new HibernateUtil();
 	}
 	
+
+	
 	public Optional findByNome_optional(String nome_optional)
 	{
 		Optional optional=null;
@@ -94,6 +96,46 @@ public class OptionalServiceImpl implements OptionalService
 		return list;	
 	}
 	
+	public List findByExample(Optional optional)
+	{
+		List list=null;
+		try
+		{
+			session = util.getSessionFactory().getCurrentSession();	
+			session.beginTransaction();
+			Criteria criteria = session.createCriteria(Optional.class);
+			criteria.add( Example.create(optional).excludeZeroes() );
+			List result = criteria.list();
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Errore OptionalServiceImpl findByExample");
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List findAllOptional()
+	{
+		List cri=null;
+	
+		try
+		{
+			session = util.getSessionFactory().getCurrentSession();
+			session.beginTransaction(); 
+			Criteria criteria = session.createCriteria(Optional.class);
+			cri = criteria.list();
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Errore OptionalServiceImpl findAllOptional");
+			e.printStackTrace();
+		}
+		return cri;
+	}
+	
 	public boolean persist(Optional optional,String nome_opt)
 	{
 		boolean ris=true;
@@ -145,27 +187,28 @@ public class OptionalServiceImpl implements OptionalService
 		return ris;
 	}
 	
-	public boolean updateOptional(Optional optional,String nome_optional)
+	public boolean updateOptional(Optional optional)
 	{
 		boolean ris=true;
 		try
 		{
-			Optional opt=this.findByNome_optional(nome_optional);
-		
+			Optional opt=null;
+			session = util.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			opt=(Optional)session.get(Optional.class, optional.getId_optional());
 			if(opt!=null)
 			{
-				session = util.getSessionFactory().getCurrentSession();
-				session.beginTransaction();
 				opt.setNome_optional(optional.getNome_optional());
 				opt.setDescrizione_optional(optional.getDescrizione_optional());
 				opt.setSupplemento_optional(optional.getSupplemento_optional());
 				session.saveOrUpdate(opt);
-				session.getTransaction().commit();
 			}
 			else
 				ris=false;
 			
-		}catch(Exception e)
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
 		{
 			System.out.println("Errore OptionalServiceImpl updateOptional");
 			e.printStackTrace();
@@ -174,25 +217,7 @@ public class OptionalServiceImpl implements OptionalService
 		return ris;
 	}
 	
-	public List findAllOptional()
-	{
-		List cri=null;
-	
-		try
-		{
-			session = util.getSessionFactory().getCurrentSession();
-			session.beginTransaction(); 
-			Criteria criteria = session.createCriteria(Optional.class);
-			cri = criteria.list();
-			session.getTransaction().commit();
-		}
-		catch(Exception e)
-		{
-			System.out.println("Errore OptionalServiceImpl findAllOptional");
-			e.printStackTrace();
-		}
-		return cri;
-	}
+
 
 
 }

@@ -10,6 +10,6 @@
 	<s:head />
 </head>
 <body>
-	Spicente ma questa <s:property value="login"/> e questa password <s:property value="password" /> non sono registrate<br/>
+	<b>Error !!!</b>
 </body>
 </html>
