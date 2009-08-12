@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ServiceCategoriaAction extends BaseCategoriaAction 
 {
-	public String insertOptional()throws Exception 
+	public String insertCategoria()throws Exception 
 	{
 	    Categoria tmp_categoria=super.getCategoria();
 		CategoriaService tmp_service=super.getService();
