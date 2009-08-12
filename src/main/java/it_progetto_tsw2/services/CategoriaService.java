@@ -8,7 +8,6 @@ import it_progetto_tsw2_hibernate.*;
 public interface CategoriaService 
 {
 	public Categoria findByNome_categoria(String nome_categoria);
-	public List findByCriteria(ArrayList criterias);
 	public List findAllCategoria();
 	public List findByExample(Categoria categoria);
 	

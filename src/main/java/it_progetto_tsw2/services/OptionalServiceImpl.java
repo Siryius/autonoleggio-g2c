@@ -37,16 +37,16 @@ public class OptionalServiceImpl implements OptionalService
 		Optional optional=null;
 		try
 		{
+					
+			session = util.getSessionFactory().getCurrentSession();	
+			session.beginTransaction();
 			
-			QueryCriteria query_criteria=new QueryCriteria("nome_optional",nome_optional);
-			ArrayList array_criteria=new ArrayList();
-			array_criteria.add(query_criteria);
-		
-			List list=this.findByCriteria(array_criteria);
-			if(list.size()!=0)
-			{
-				optional=(Optional)list.get(0);
-			}
+			criteria= session.createCriteria(Optional.class);
+			criteria.add(Restrictions.eq("nome_optional",nome_optional));
+			optional=(Optional)criteria.uniqueResult();
+			System.out.println("Ok query \n");
+			
+			session.getTransaction().commit();
 		}
 		catch(Exception e)
 		{
@@ -56,7 +56,7 @@ public class OptionalServiceImpl implements OptionalService
 		return optional;
 	}
 	
-	public List findByCriteria(ArrayList criterias)
+	/*public List findByCriteria(ArrayList criterias)
 	{
 		Optional optional=null;
 		Criteria criteria;
@@ -94,7 +94,7 @@ public class OptionalServiceImpl implements OptionalService
 			e.printStackTrace();
 		}
 		return list;	
-	}
+	}*/
 	
 	public List findByExample(Optional optional)
 	{

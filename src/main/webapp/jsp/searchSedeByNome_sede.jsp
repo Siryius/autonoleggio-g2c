@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Optional</title>
+	<title>Sede</title>
 	<s:head />
 </head>
 <body>
@@ -25,8 +25,8 @@
 		<s:textfield  name="model.indirizzo_sede.citta" label="Citta"/>
 		<s:textfield  name="model.indirizzo_sede.provincia" label="Provincia"/>
 
-		<s:submit value="Update" action="updateOptional"/>
-		<s:submit value="Delete" action="deleteOptional"/>
+		<s:submit value="Update" action="updateSede"/>
+		<s:submit value="Delete" action="deleteSede"/>
 	</s:form>
 </body>
 </html>

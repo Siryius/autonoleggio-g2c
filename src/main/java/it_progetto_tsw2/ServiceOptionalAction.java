@@ -1,7 +1,5 @@
 package it_progetto_tsw2;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.apache.struts2.interceptor.*;
 
 import com.opensymphony.xwork2.validator.annotations.Validations;
