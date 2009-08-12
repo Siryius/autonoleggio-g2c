@@ -22,7 +22,7 @@ public class Veicolo
 	private Sede sede;
 	
 	private Set<Prenotazione> prenotazioni=new HashSet();
-	private Set<Pratiche> pratiche=new HashSet();
+	private Set<Pratica> pratiche=new HashSet();
 	private Set<Optional> optionals=new HashSet();
 	
 	public Long getId_veicolo() {
@@ -121,10 +121,10 @@ public class Veicolo
 	public void setPrenotazioni(Set<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
 	}
-	public Set<Pratiche> getPratiche() {
+	public Set<Pratica> getPratiche() {
 		return pratiche;
 	}
-	public void setPratiche(Set<Pratiche> pratiche) {
+	public void setPratiche(Set<Pratica> pratiche) {
 		this.pratiche = pratiche;
 	}
 	public Set<Optional> getOptionals() {

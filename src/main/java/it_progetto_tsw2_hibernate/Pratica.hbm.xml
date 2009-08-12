@@ -4,14 +4,14 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-	<class name="it_progetto_tsw2_hibernate.Pratiche" table="PRATICHE">
+	<class name="it_progetto_tsw2_hibernate.Pratica" table="PRATICA">
 	
-		<id name="id_pratiche" column="ID_PRATICHE">
+		<id name="id_pratica" column="ID_PRATICA">
 			<generator class="native"/>
 		</id>
-		<property name="nome_pratiche" type="string" column="NOME_PRATICHE" unique="true" not-null="true"/>
-		<property name="descrizione_pratiche" type="string" column="DESCRIZIONE_PRATICHE"/>
-		<property name="scadenza_pratiche" type="date" column="COSTO_PRATICHE"/>
+		<property name="nome_pratica" type="string" column="NOME_PRATICA" unique="true" not-null="true"/>
+		<property name="descrizione_pratica" type="string" column="DESCRIZIONE_PRATICA"/>
+		<property name="scadenza_pratica" type="date" column="SCADENZA_PRATICA"/>
 		
 		<!-- mappiamo ora le associazioni -->
 		
