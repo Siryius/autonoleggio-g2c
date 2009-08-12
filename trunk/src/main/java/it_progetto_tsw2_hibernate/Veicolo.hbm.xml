@@ -35,7 +35,7 @@
         
         <set name="pratiche" inverse="true">
         	<key column="ID_VEICOLO"/>
-        	<one-to-many class="it_progetto_tsw2_hibernate.Pratiche"/>
+        	<one-to-many class="it_progetto_tsw2_hibernate.Pratica"/>
         </set>
         
         

@@ -16,6 +16,8 @@
 	<tr><td><a href="allCategoria.action"> Categoria </a></td></tr>
 	<tr><td><a href="allSede.action"> Sede </a></td></tr>
 	<tr><td><a href="allPromozione.action"> Promozione </a></td></tr>
+	<tr><td><a href="allAssicurazione.action"> Assicurazione </a></td></tr>
+	<tr><td><a href="allPratica.action"> Pratica </a></td></tr>
 	</table>
 </body>
 </html>

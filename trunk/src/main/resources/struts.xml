@@ -153,6 +153,73 @@
 		
 		<!-- END Flusso Promozione  -->
 		
+		<!-- Flusso Assicurazione  -->
+		
+		<action name="allAssicurazione" method="searchAllAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction"> 
+			<result name="success" >/jsp/allAssicurazione.jsp</result>
+		</action>
+		
+		<action name="searchAssicurazioneByNome_assicurazione" method="searchAssicurazioneByNome_assicurazione" class="it_progetto_tsw2.ServiceOptionalAction"> 
+			<result name="success" type="dispatcher">/jsp/searchAssicurazioneByNome_assicurazione.jsp</result>
+		</action>
+		
+		<action name="searchAssicurazioneByExample" method="searchAssicurazioneByExample" class="it_progetto_tsw2.ServiceAssicurazioneAction"> 
+			<result name="success" type="dispatcher">/jsp/allAssicurazione.jsp</result>
+		</action>
+		
+		<action name="campiAssicurazione" class="it_progetto_tsw2.CampiAssicurazioneAction">
+			<result name="success" type="dispatcher">/jsp/campiAssicurazione.jsp</result>
+		</action>
+		
+		<action name="newAssicurazione" method="insertAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allAssicurazione</result>
+		</action>
+		
+		<action name="deleteAssicurazione" method="deleteAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction" > 
+			<result name="success" type="redirectAction">allAssicurazione</result>
+		</action>
+		
+		<action name="updateAssicurazione" method="updateAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction" > 
+			<result name="success" type="redirectAction">allAssicurazione</result>
+		</action>
+		
+		<!-- END Flusso Assicurazione  -->
+		
+		<!-- Flusso Pratica  -->
+		
+		<action name="allPratica" method="searchAllPratica" class="it_progetto_tsw2.ServicePraticaAction"> 
+			<result name="success" >/jsp/allPratica.jsp</result>
+		</action>
+		
+		<action name="searchPraticaByNome_optional" method="searchPraticaByNome_pratica" class="it_progetto_tsw2.ServicePraticaAction"> 
+			<result name="success" type="dispatcher">/jsp/searchPraticaByNome_pratica.jsp</result>
+		</action>
+		
+		<action name="searchPraticaByExample" method="searchPraticaByExample" class="it_progetto_tsw2.ServicePraticaAction"> 
+			<result name="success" type="dispatcher">/jsp/allPratica.jsp</result>
+		</action>
+		
+		<action name="campiPratica" class="it_progetto_tsw2.CampiPraticaAction">
+			<result name="success" type="dispatcher">/jsp/campiPratica.jsp</result>
+		</action>
+		
+		<action name="newPratica" method="insertPratica" class="it_progetto_tsw2.ServicePraticaAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allPratica</result>
+		</action>
+		
+		<action name="deletePratica" method="deletePratica" class="it_progetto_tsw2.ServicePraticaAction" > 
+			<result name="success" type="redirectAction">allPratica</result>
+		</action>
+		
+		<action name="updatePratica" method="updatePratica" class="it_progetto_tsw2.ServicePraticaAction" > 
+			<result name="success" type="redirectAction">allPratica</result>
+		</action>
+		
+		<!-- END Flusso Pratica  -->
+		
+		
 	
 		
 	

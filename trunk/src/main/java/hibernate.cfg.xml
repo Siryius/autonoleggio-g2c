@@ -35,7 +35,7 @@
         <mapping resource="it_progetto_tsw2_hibernate/Categoria.hbm.xml"/>
         <mapping resource="it_progetto_tsw2_hibernate/Noleggio.hbm.xml"/>
         <mapping resource="it_progetto_tsw2_hibernate/Optional.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Pratiche.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2_hibernate/Pratica.hbm.xml"/>
         <mapping resource="it_progetto_tsw2_hibernate/Prenotazione.hbm.xml"/>
         <mapping resource="it_progetto_tsw2_hibernate/Promozione.hbm.xml"/>
         <mapping resource="it_progetto_tsw2_hibernate/Sede.hbm.xml"/>
