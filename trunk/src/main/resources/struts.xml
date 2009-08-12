@@ -74,7 +74,7 @@
 		
 		<action name="newCategoria" method="insertCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
-			<result name="success" type="redirectAction">allOptional</result>
+			<result name="success" type="redirectAction">allCategoria</result>
 		</action>
 		
 		<action name="deleteCategoria" method="deleteCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" > 
@@ -87,6 +87,73 @@
 		
 		<!-- END Flusso Categoria  -->
 		
+		<!-- Flusso Sede  -->
+		
+		<action name="allSede" method="searchAllSede" class="it_progetto_tsw2.ServiceSedeAction"> 
+			<result name="success" >/jsp/allSede.jsp</result>
+		</action>
+		
+		<action name="searchSedeByNome_sede" method="searchSedeByNome_sede" class="it_progetto_tsw2.ServiceSedeAction"> 
+			<result name="success" type="dispatcher">/jsp/searchSedeByNome_sede.jsp</result>
+		</action>
+		
+		<action name="searchSedeByExample" method="searchSedeByExample" class="it_progetto_tsw2.ServiceSedeAction"> 
+			<result name="success" type="dispatcher">/jsp/allSede.jsp</result>
+		</action>
+		
+		<action name="campiSede" class="it_progetto_tsw2.CampiSedeAction">
+			<result name="success" type="dispatcher">/jsp/campiSede.jsp</result>
+		</action>
+		
+		<action name="newSede" method="insertSede" class="it_progetto_tsw2.ServiceSedeAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allSede</result>
+		</action>
+		
+		<action name="deleteSede" method="deleteSede" class="it_progetto_tsw2.ServiceSedeAction" > 
+			<result name="success" type="redirectAction">allSede</result>
+		</action>
+		
+		<action name="updateSede" method="updateSede" class="it_progetto_tsw2.ServiceSedeAction" > 
+			<result name="success" type="redirectAction">allSede</result>
+		</action>
+		
+		<!-- END Flusso Sede  -->
+		
+		<!-- Flusso Promozione  -->
+		
+		<action name="allPromozione" method="searchAllPromozione" class="it_progetto_tsw2.ServicePromozioneAction"> 
+			<result name="success" >/jsp/allPromozione.jsp</result>
+		</action>
+		
+		<action name="searchPromozioneByNome_promozione" method="searchPromozioneByNome_promozione" class="it_progetto_tsw2.ServicePromozioneAction"> 
+			<result name="success" type="dispatcher">/jsp/searchPromozioneByNome_promozione.jsp</result>
+		</action>
+		
+		<action name="searchPromozioneByExample" method="searchPromozioneByExample" class="it_progetto_tsw2.ServicePromozioneAction"> 
+			<result name="success" type="dispatcher">/jsp/allPromozione.jsp</result>
+		</action>
+		
+		<action name="campiPromozione" class="it_progetto_tsw2.CampiPromozioneAction">
+			<result name="success" type="dispatcher">/jsp/campiPromozione.jsp</result>
+		</action>
+		
+		<action name="newPromozione" method="insertPromozione" class="it_progetto_tsw2.ServicePromozioneAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allPromozione</result>
+		</action>
+		
+		<action name="deletePromozione" method="deletePromozione" class="it_progetto_tsw2.ServicePromozioneAction" > 
+			<result name="success" type="redirectAction">allPromozione</result>
+		</action>
+		
+		<action name="updatePromozione" method="updatePromozione" class="it_progetto_tsw2.ServicePromozioneAction" > 
+			<result name="success" type="redirectAction">allPromozione</result>
+		</action>
+		
+		<!-- END Flusso Promozione  -->
+		
+	
 		
 	
 		

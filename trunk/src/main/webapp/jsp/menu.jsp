@@ -11,8 +11,11 @@
 </head>
 <body>
 	Menu
-	<a href="allOptional.action"> Optional </a>
-	<a href="allCategoria.action"> Categoria </a>
-
+	<table>
+	<tr><td><a href="allOptional.action"> Optional </a></td></tr>
+	<tr><td><a href="allCategoria.action"> Categoria </a></td></tr>
+	<tr><td><a href="allSede.action"> Sede </a></td></tr>
+	<tr><td><a href="allPromozione.action"> Promozione </a></td></tr>
+	</table>
 </body>
 </html>

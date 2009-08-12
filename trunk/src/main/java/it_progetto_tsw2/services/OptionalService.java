@@ -7,7 +7,6 @@ import java.util.*;
 public interface OptionalService 
 {
 	public Optional findByNome_optional(String nome_optional);
-	public List findByCriteria(ArrayList criterias);
 	public List findAllOptional();
 	public List findByExample(Optional optional);
 	
