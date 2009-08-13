@@ -38,10 +38,10 @@
 		<tr> 
 			<td>
 				<s:url id="searchClienteByNome_cliente" action="searchClienteByNome_cliente">
-					<s:param name="nome_optional" value="nome_optional"> <s:property value="nome_optional" /></s:param>
+					<s:param name="CF_utente" value="CF_utente"> <s:property value="CF_utente" /></s:param>
 				</s:url>
 				
-				<s:a href="%{searchOptionalByNome_optional}"> <img src="../images/info.png" WIDTH="30" HEIGHT="30"/> </s:a> 
+				<s:a href="%{searchOptionalByCF_cliente}"> <img src="../images/info.png" WIDTH="30" HEIGHT="30"/> </s:a> 
 			</td>
 			
 			<td> <s:property value="cf_utente"/>  </td> 

@@ -18,6 +18,9 @@
 	<tr><td><a href="allPromozione.action"> Promozione </a></td></tr>
 	<tr><td><a href="allAssicurazione.action"> Assicurazione </a></td></tr>
 	<tr><td><a href="allPratica.action"> Pratica </a></td></tr>
+	<tr><td><a href="allVeicolo.action"> Veicolo </a></td></tr>
+	<tr><td><a href="allCliente.action"> Cliente </a></td></tr>
+	<tr><td><a href="allStaff.action"> Staff </a></td></tr>
 	</table>
 </body>
 </html>

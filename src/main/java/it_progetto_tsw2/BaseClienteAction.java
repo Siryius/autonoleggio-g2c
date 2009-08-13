@@ -28,7 +28,7 @@ public class BaseClienteAction extends BaseAction implements ModelDriven<Cliente
 		this.cliente = cliente;
 	}
 	
-	public void setOptionalService(ClienteService service) {
+	public void setClienteService(ClienteService service) {
 		this.service = service;
 	}
 	
