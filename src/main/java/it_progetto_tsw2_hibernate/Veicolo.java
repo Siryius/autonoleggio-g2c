@@ -61,7 +61,7 @@ public class Veicolo
 	public void setCilindrata_veicolo(int cilindrata_veicolo) {
 		this.cilindrata_veicolo = cilindrata_veicolo;
 	}
-	public boolean isDisponibile_veicolo() {
+	public boolean getDisponibile_veicolo() {
 		return disponibile_veicolo;
 	}
 	public void setDisponibile_veicolo(boolean disponibile_veicolo) {

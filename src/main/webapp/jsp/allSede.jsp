@@ -18,7 +18,7 @@
 		<s:textfield  name="apertura_pom" label="Apertura pomeridiana"/>
 		<s:textfield  name="chiusura_pom" label="Chiusura pomeridiana"/>
 		<s:textfield  name="indirizzo_sede.via" label="Via"/>
-		<s:textfield  name="indirizzo_sede.cap" label="CAP"/>
+		<s:textfield  name="indirizzo_sede.CAP" label="CAP"/>
 		<s:textfield  name="indirizzo_sede.n_civico" label="N° Civico"/>
 		<s:textfield  name="indirizzo_sede.stato" label="Stato"/>
 		<s:textfield  name="indirizzo_sede.citta" label="Citta"/>
@@ -41,7 +41,7 @@
 			
 			<td> <s:property value="nome_sede"/>  </td> 
 			<td> <s:property value="descrizione_sede"/>  </td>
-			<td> <s:property value="supplemento_sede"/> </td>
+			<td> <s:property value="provincia_sede"/> </td>
 			
 			<td>
 				<s:url id="deleteSede" action="deleteSede">

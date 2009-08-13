@@ -19,7 +19,7 @@
 		<s:textfield  name="model.apertura_pom" label="Apertura pomeridiana"/>
 		<s:textfield  name="model.chiusura_pom" label="Chiusura pomeridiana"/>
 		<s:textfield  name="model.indirizzo_sede.via" label="Via"/>
-		<s:textfield  name="model.indirizzo_sede.cap" label="CAP"/>
+		<s:textfield  name="model.indirizzo_sede.CAP" label="CAP"/>
 		<s:textfield  name="model.indirizzo_sede.n_civico" label="N° Civico"/>
 		<s:textfield  name="model.indirizzo_sede.stato" label="Stato"/>
 		<s:textfield  name="model.indirizzo_sede.citta" label="Citta"/>
