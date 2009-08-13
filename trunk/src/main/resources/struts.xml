@@ -192,7 +192,7 @@
 			<result name="success" >/jsp/allPratica.jsp</result>
 		</action>
 		
-		<action name="searchPraticaByNome_optional" method="searchPraticaByNome_pratica" class="it_progetto_tsw2.ServicePraticaAction"> 
+		<action name="searchPraticaByNome_pratica" method="searchPraticaByNome_pratica" class="it_progetto_tsw2.ServicePraticaAction"> 
 			<result name="success" type="dispatcher">/jsp/searchPraticaByNome_pratica.jsp</result>
 		</action>
 		
@@ -218,6 +218,106 @@
 		</action>
 		
 		<!-- END Flusso Pratica  -->
+		
+		<!-- Flusso Veicolo  -->
+		
+		<action name="allVeicolo" method="searchAllVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction"> 
+			<result name="success" >/jsp/allVeicolo.jsp</result>
+		</action>
+		
+		<action name="searchVeicoloByNome_veicolo" method="searchVeicoloByNome_veicolo" class="it_progetto_tsw2.ServiceVeicoloAction"> 
+			<result name="success" type="dispatcher">/jsp/searchVeicoloByNome_veicolo.jsp</result>
+		</action>
+		
+		<action name="searchVeicoloByExample" method="searchVeicoloByExample" class="it_progetto_tsw2.ServiceVeicoloAction"> 
+			<result name="success" type="dispatcher">/jsp/allVeicolo.jsp</result>
+		</action>
+		
+		<action name="campiVeicolo" class="it_progetto_tsw2.CampiVeicoloAction">
+			<result name="success" type="dispatcher">/jsp/campiVeicolo.jsp</result>
+		</action>
+		
+		<action name="newVeicolo" method="insertVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allVeicolo</result>
+		</action>
+		
+		<action name="deleteVeicolo" method="deleteVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction" > 
+			<result name="success" type="redirectAction">allVeicolo</result>
+		</action>
+		
+		<action name="updateVeicolo" method="updateVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction" > 
+			<result name="success" type="redirectAction">allVeicolo</result>
+		</action>
+		
+		<!-- END Flusso Veicolo  -->
+		
+		<!-- Flusso Cliente  -->
+		
+		<action name="allCliente" method="searchAllCliente" class="it_progetto_tsw2.ServiceClienteAction"> 
+			<result name="success" >/jsp/allCliente.jsp</result>
+		</action>
+		
+		<action name="searchClienteByCF_cliente" method="searchClienteByCF_cliente" class="it_progetto_tsw2.ServiceClienteAction"> 
+			<result name="success" type="dispatcher">/jsp/searchClienteByNome_cliente.jsp</result>
+		</action>
+		
+		<action name="searchClienteByExample" method="searchClienteByExample" class="it_progetto_tsw2.ServiceClienteAction"> 
+			<result name="success" type="dispatcher">/jsp/allCliente.jsp</result>
+		</action>
+		
+		<action name="campiCliente" class="it_progetto_tsw2.CampiClienteAction">
+			<result name="success" type="dispatcher">/jsp/campiCliente.jsp</result>
+		</action>
+		
+		<action name="newCliente" method="insertCliente" class="it_progetto_tsw2.ServiceClienteAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allCliente</result>
+		</action>
+		
+		<action name="deleteCliente" method="deleteCliente" class="it_progetto_tsw2.ServiceClienteAction" > 
+			<result name="success" type="redirectAction">allCliente</result>
+		</action>
+		
+		<action name="updateCliente" method="updateCliente" class="it_progetto_tsw2.ServiceClienteAction" > 
+			<result name="success" type="redirectAction">allCliente</result>
+		</action>
+		
+		<!-- END Flusso Cliente  -->
+		
+		<!-- Flusso Staff  -->
+		
+		<action name="allStaff" method="searchAllStaff" class="it_progetto_tsw2.ServiceStaffAction"> 
+			<result name="success" >/jsp/allStaff.jsp</result>
+		</action>
+		
+		<action name="searchStaffByCF_staff" method="searchStaffByCF_staff" class="it_progetto_tsw2.ServiceStaffAction"> 
+			<result name="success" type="dispatcher">/jsp/searchStaffByNome_staff.jsp</result>
+		</action>
+		
+		<action name="searchStaffByExample" method="searchStaffByExample" class="it_progetto_tsw2.ServiceStaffAction"> 
+			<result name="success" type="dispatcher">/jsp/allStaff.jsp</result>
+		</action>
+		
+		<action name="campiStaff" class="it_progetto_tsw2.CampiStaffAction">
+			<result name="success" type="dispatcher">/jsp/campiStaff.jsp</result>
+		</action>
+		
+		<action name="newStaff" method="insertStaff" class="it_progetto_tsw2.ServiceStaffAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allStaff</result>
+		</action>
+		
+		<action name="deleteStaff" method="deleteStaff" class="it_progetto_tsw2.ServiceStaffAction" > 
+			<result name="success" type="redirectAction">allStaff</result>
+		</action>
+		
+		<action name="updateStaff" method="updateStaff" class="it_progetto_tsw2.ServiceStaffAction" > 
+			<result name="success" type="redirectAction">allStaff</result>
+		</action>
+		
+		<!-- END Flusso Staff  -->
+		
 		
 		
 	

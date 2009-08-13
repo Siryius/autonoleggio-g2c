@@ -42,7 +42,7 @@ public class ClienteServiceImpl implements ClienteService
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore ClienteServiceImpl findByNome_cliente");
+			System.out.println("Errore ClienteServiceImpl findByCF_cliente");
 			e.printStackTrace();
 		}
 		return cliente;
@@ -133,9 +133,9 @@ public class ClienteServiceImpl implements ClienteService
 		boolean ris=true;
 		try
 		{
-			Cliente temp_cliente=null;
-			temp_cliente=findByCF_cliente(CF_cliente);
-			if(temp_cliente==null)
+			Cliente tmp_cliente=null;
+			tmp_cliente=findByCF_cliente(CF_cliente);
+			if(tmp_cliente==null)
 			{	
 				session = util.getSessionFactory().getCurrentSession();
 				session.beginTransaction();

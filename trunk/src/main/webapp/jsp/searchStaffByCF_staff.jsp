@@ -6,7 +6,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-	<title>Cliente</title>
+	<title>Staff</title>
 	<s:head />
 </head>
 <body>
@@ -24,13 +24,11 @@
 		<s:textfield  name="model.indirizzo_utente.n_civico" label="N° Civico"/>
 		<s:textfield  name="model.indirizzo_utente.stato" label="Stato"/>
 		<s:textfield  name="model.indirizzo_utente.provicia" label="Provincia"/>
-		<s:textfield  name="model.cartacredito_cliente" label="Carta di Credito"/>
-		<s:textfield  name="model.tipologia_cliente" label="Tipologia"/>
-		<s:textfield  name="model.validita_cliente" label="Validita"/>
+		<s:textfield  name="model.competenza_staff" label="Competenza"/>
 		
 		
-		<s:submit value="Update" action="updateCliente"/>
-		<s:submit value="Delete" action="deleteCliente"/>
+		<s:submit value="Update" action="updateStaff"/>
+		<s:submit value="Delete" action="deleteStaff"/>
 	</s:form>
 </body>
 </html>

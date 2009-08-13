@@ -31,7 +31,7 @@
 		
 		<joined-subclass name="it_progetto_tsw2_hibernate.Staff" table="STAFF">
 			<key column="ID_STAFF"/>
-			<property name="competenza" type="string" column="COMPETENZA" not-null="true"/>
+			<property name="competenza_staff" type="string" column="COMPETENZA_STAFF" not-null="true"/>
 		</joined-subclass>
 		
 		<joined-subclass name="it_progetto_tsw2_hibernate.Cliente" table="CLIENTE">

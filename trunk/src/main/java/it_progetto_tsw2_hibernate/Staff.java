@@ -2,14 +2,14 @@ package it_progetto_tsw2_hibernate;
 
 public class Staff extends Utente
 {
-	private String competenza;
+	private String competenza_staff;
 
-	public String getCompetenza() {
-		return competenza;
+	public String getCompetenza_staff() {
+		return competenza_staff;
 	}
 
-	public void setCompetenza(String competenza) {
-		this.competenza = competenza;
+	public void setCompetenza_staff(String competenza) {
+		this.competenza_staff = competenza;
 	}
 	
 

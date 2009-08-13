@@ -80,13 +80,13 @@ public class ServiceClienteAction extends BaseClienteAction
 	
 	public String searchClienteByExample() throws Exception 
 	{
-		Cliente tmp_optional=super.getCliente();
+		Cliente tmp_cliente=super.getCliente();
 		ClienteService tmp_service=super.getService();
 		
 		Iterator tmp_clienteIterator=null;
 		try
 		{
-			List cliente_search=tmp_service.findByExample(tmp_optional);
+			List cliente_search=tmp_service.findByExample(tmp_cliente);
 			tmp_clienteIterator=cliente_search.iterator();
 			super.setAllClienteIterator(tmp_clienteIterator);
 		}
