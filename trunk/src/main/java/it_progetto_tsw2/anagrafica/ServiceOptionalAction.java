@@ -14,7 +14,11 @@ import org.apache.struts2.config.ParentPackage;
 @Validation
 public class ServiceOptionalAction extends BaseOptionalAction 
 {
-	//@Validations( visitorFields = { @VisitorFieldValidator(message = "Default message", fieldName= "model", appendPrefix = false) } )
+    @Validations( visitorFields = {
+    		@VisitorFieldValidator(
+                    message = "Default message", 
+                    fieldName= "model", appendPrefix = false ) })
+    
 	public String insertOptional()throws Exception 
 	{
 	    Optional tmp_optional=super.getOptional();

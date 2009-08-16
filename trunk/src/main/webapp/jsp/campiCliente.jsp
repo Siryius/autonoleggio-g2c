@@ -21,11 +21,10 @@
 		<s:textfield  name="indirizzo_utente.CAP" label="CAP" required="true"/>
 		<s:textfield  name="indirizzo_utente.citta" label="Citta" required="true"/>
 		<s:textfield  name="indirizzo_utente.n_civico" label="N° Civico" required="true"/>
-		<s:textfield  name="indirizzo_utente.stato" label="Stato" required="true"/>
-		<s:textfield  name="indirizzo_utente.provicia" label="Provincia" required="true"/>
-		<s:textfield  name="cartacredito_cliente" label="Carta di Credito" required="true"/>
+		<s:textfield  name="indirizzo_utente.provincia" label="Provincia" required="true"/>
+		<s:textfield  name="cartaCredito_cliente" label="Carta di Credito" required="true"/>
 		<s:textfield  name="tipologia_cliente" label="Tipologia" required="true"/>
-		<s:textfield  name="validita_cliente" label="Validita" required="true"/>
+		<s:datetimepicker name="validita_cliente" label="Validita"  required="true"/>
 		
 		<s:submit key="Register" value="Register"/>
 	</s:form>

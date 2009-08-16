@@ -22,7 +22,6 @@
 		<s:textfield  name="model.indirizzo_utente.CAP" label="CAP"/>
 		<s:textfield  name="model.indirizzo_utente.citta" label="Citta"/>
 		<s:textfield  name="model.indirizzo_utente.n_civico" label="N° Civico"/>
-		<s:textfield  name="model.indirizzo_utente.stato" label="Stato"/>
 		<s:textfield  name="model.indirizzo_utente.provicia" label="Provincia"/>
 		<s:textfield  name="model.competenza_staff" label="Competenza"/>
 		

@@ -21,8 +21,7 @@
 		<s:textfield  name="indirizzo_utente.CAP" label="CAP" required="true"/>
 		<s:textfield  name="indirizzo_utente.citta" label="Citta" required="true"/>
 		<s:textfield  name="indirizzo_utente.n_civico" label="N° Civico" required="true"/>
-		<s:textfield  name="indirizzo_utente.stato" label="Stato" required="true"/>
-		<s:textfield  name="indirizzo_utente.provicia" label="Provincia" required="true"/>
+		<s:textfield  name="indirizzo_utente.provincia" label="Provincia" required="true"/>
 		<s:textfield  name="competenza_staff" label="Competenza" required="true"/>
 	
 		<s:submit key="Register" value="Register"/>
