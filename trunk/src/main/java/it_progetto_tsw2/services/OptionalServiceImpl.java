@@ -12,11 +12,11 @@ import org.hibernate.criterion.*;
 
 
 import it_progetto_tsw2.services.*;
+import it_progetto_tsw2.util.*;
 import it_progetto_tsw2_hibernate.*;
-import util.HibernateUtil;
+
 import java.util.*;
 
-import util.*;
 
 
 public class OptionalServiceImpl implements OptionalService
@@ -104,8 +104,14 @@ public class OptionalServiceImpl implements OptionalService
 			session = util.getSessionFactory().getCurrentSession();	
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Optional.class);
-			criteria.add( Example.create(optional).excludeZeroes() );
-			List result = criteria.list();
+			criteria.add( Example.create(optional).excludeZeroes().ignoreCase().enableLike(MatchMode.ANYWHERE) );
+			System.out.println(optional.getNome_optional());
+			System.out.println(optional.getDescrizione_optional());
+			System.out.println(optional.getSupplemento_optional());
+			list = criteria.list();
+			System.out.println(list.size());
+			Optional op=(Optional)list.get(0);
+			System.out.println(op.getNome_optional());
 			session.getTransaction().commit();
 		}
 		catch(Exception e)

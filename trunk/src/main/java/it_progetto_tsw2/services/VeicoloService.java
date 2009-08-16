@@ -2,7 +2,7 @@ package it_progetto_tsw2.services;
 
 import java.util.List;
 
-import it_progetto_tsw2_hibernate.Veicolo;;
+import it_progetto_tsw2_hibernate.Veicolo;
 
 public interface VeicoloService
 {

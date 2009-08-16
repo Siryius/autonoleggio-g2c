@@ -11,7 +11,7 @@
 </head>
 <body>
 	<s:form action="newOptional" method="post" enctype="multipart/form-data">
-		<s:textfield label="Nome" name="nome_optional" required="true"/>
+		<s:textfield key="text.noImage" name="nome_optional" required="true"/>
 		<s:textfield  label="Descrizione" name="descrizione_optional" required="true"/>
 		<s:textfield  label="Supplemento" name="supplemento_optional" required="true"/>
 		<s:submit key="Register" value="Register"/>

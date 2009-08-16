@@ -1,5 +1,6 @@
 package it_progetto_tsw2.services;
 
+import it_progetto_tsw2.util.HibernateUtil;
 import it_progetto_tsw2_hibernate.Promozione;
 
 import java.util.ArrayList;
@@ -10,7 +11,6 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 
-import util.HibernateUtil;
 
 public class PromozioneServiceImpl implements PromozioneService
 {

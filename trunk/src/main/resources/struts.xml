@@ -10,45 +10,81 @@
 
 	<package name="base-package" extends="struts-default">
 	
+	<interceptors>
+            
+		<interceptor name="security" class="it_progetto_tsw2.util.SecurityInterceptor">
+			<param name="requiresAuthentication">/anagrafica,/admin</param>
+		</interceptor>
+		
+        <interceptor-stack name="securedBasicStack">
+			<interceptor-ref name="security" />
+            <interceptor-ref name="paramsPrepareParamsStack" />				
+ 			<interceptor-ref name="debugging"/>
+ 		</interceptor-stack>
+	</interceptors>
+        
+   	<default-interceptor-ref name="securedBasicStack" />
 	
 	
 	<global-results>
-            <result name="unknownError">/WEB-INF/jsp/error.jsp</result>
+            <result name="unknownError">/jsp/error.jsp</result>
         </global-results>
         <global-exception-mappings>
             <exception-mapping exception="java.lang.Exception" result="unknownError" />
             <exception-mapping exception="org.hibernate.exception.ConstraintViolationException" result="dupPK"></exception-mapping>
         </global-exception-mappings>
+        
+        <!-- Index  -->
+        
+        <action name="index" class="it_progetto_tsw2.action.IndexAction">
+        	<result name="success" >/jsp/logon.jsp</result>
+        </action>
+        
+        <!-- END Index -->
 	
+		<!-- Login  -->
+		
+		<action name="logon" class="it_progetto_tsw2.login.LogonAction">
+			<result name="success" >/jsp/menu.jsp</result>
+			<result name="failed" >index.jsp</result>
+		</action>
+		
+		<action name="logoff" class="it_progetto_tsw2.login.LogoffAction">
+			<result name="success" type="redirectAction">index.jsp</result>
+		</action>
+		
+		<!-- END Login  -->	
 		
 		<!-- Flusso Optional  -->
 		
-		<action name="allOptional" method="searchAllOptional" class="it_progetto_tsw2.ServiceOptionalAction"> 
+		<action name="allOptional" method="searchAllOptional" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction"> 
 			<result name="success" >/jsp/allOptional.jsp</result>
 		</action>
 		
-		<action name="searchOptionalByNome_optional" method="searchOptionalByNome_optional" class="it_progetto_tsw2.ServiceOptionalAction"> 
+		<action name="searchOptionalByNome_optional" method="searchOptionalByNome_optional" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction"> 
 			<result name="success" type="dispatcher">/jsp/searchOptionalByNome_optional.jsp</result>
 		</action>
 		
-		<action name="searchOptionalByExample" method="searchOptionalByExample" class="it_progetto_tsw2.ServiceOptionalAction"> 
+		<action name="searchOptionalByExample" method="searchOptionalByExample" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction"> 
 			<result name="success" type="dispatcher">/jsp/allOptional.jsp</result>
 		</action>
 		
-		<action name="campiOptional" class="it_progetto_tsw2.CampiOptionalAction">
+		<action name="campiOptional" class="it_progetto_tsw2.anagrafica.CampiOptionalAction">
 			<result name="success" type="dispatcher">/jsp/campiOptional.jsp</result>
 		</action>
 		
-		<action name="newOptional" method="insertOptional" class="it_progetto_tsw2.ServiceOptionalAction" >
-			<interceptor-ref name="paramsPrepareParamsStack" />
+		<action name="newOptional" method="insertOptional" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" >
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
 			<result name="success" type="redirectAction">allOptional</result>
 		</action>
 		
-		<action name="deleteOptional" method="deleteOptional" class="it_progetto_tsw2.ServiceOptionalAction" > 
+		<action name="deleteOptional" method="deleteOptional" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction" > 
 			<result name="success" type="redirectAction">allOptional</result>
 		</action>
 		
-		<action name="updateOptional" method="updateOptional" class="it_progetto_tsw2.ServiceOptionalAction" > 
+		<action name="updateOptional" method="updateOptional" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction" > 
 			<result name="success" type="redirectAction">allOptional</result>
 		</action>
 		
@@ -56,32 +92,32 @@
 		
 		<!-- Flusso Categoria  -->
 		
-		<action name="allCategoria" method="searchAllCategoria" class="it_progetto_tsw2.ServiceCategoriaAction"> 
+		<action name="allCategoria" method="searchAllCategoria" class="it_progetto_tsw2.anagrafica.ServiceCategoriaAction"> 
 			<result name="success" >/jsp/allCategoria.jsp</result>
 		</action>
 		
-		<action name="searchCategoriaByNome_categoria" method="searchCategoriaByNome_categoria" class="it_progetto_tsw2.ServiceCategoriaAction"> 
+		<action name="searchCategoriaByNome_categoria" method="searchCategoriaByNome_categoria" class="it_progetto_tsw2.anagrafica.ServiceCategoriaAction"> 
 			<result name="success" type="dispatcher">/jsp/searchCategoriaByNome_categoria.jsp</result>
 		</action>
 		
-		<action name="searchCategoriaByExample" method="searchCategoriaByExample" class="it_progetto_tsw2.ServiceCategoriaAction"> 
+		<action name="searchCategoriaByExample" method="searchCategoriaByExample" class="it_progetto_tsw2.anagrafica.ServiceCategoriaAction"> 
 			<result name="success" type="dispatcher">/jsp/allCategoria.jsp</result>
 		</action>
 		
-		<action name="campiCategoria" class="it_progetto_tsw2.CampiCategoriaAction">
+		<action name="campiCategoria" class="it_progetto_tsw2.anagrafica.CampiCategoriaAction">
 			<result name="success" type="dispatcher">/jsp/campiCategoria.jsp</result>
 		</action>
 		
-		<action name="newCategoria" method="insertCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" >
+		<action name="newCategoria" method="insertCategoria" class="it_progetto_tsw2.anagrafica.ServiceCategoriaAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allCategoria</result>
 		</action>
 		
-		<action name="deleteCategoria" method="deleteCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" > 
+		<action name="deleteCategoria" method="deleteCategoria" class="it_progetto_tsw2.anagrafica.ServiceCategoriaAction" > 
 			<result name="success" type="redirectAction">allCategoria</result>
 		</action>
 		
-		<action name="updateCategoria" method="updateCategoria" class="it_progetto_tsw2.ServiceCategoriaAction" > 
+		<action name="updateCategoria" method="updateCategoria" class="it_progetto_tsw2.anagrafica.ServiceCategoriaAction" > 
 			<result name="success" type="redirectAction">allCategoria</result>
 		</action>
 		
@@ -89,32 +125,32 @@
 		
 		<!-- Flusso Sede  -->
 		
-		<action name="allSede" method="searchAllSede" class="it_progetto_tsw2.ServiceSedeAction"> 
+		<action name="allSede" method="searchAllSede" class="it_progetto_tsw2.anagrafica.ServiceSedeAction"> 
 			<result name="success" >/jsp/allSede.jsp</result>
 		</action>
 		
-		<action name="searchSedeByNome_sede" method="searchSedeByNome_sede" class="it_progetto_tsw2.ServiceSedeAction"> 
+		<action name="searchSedeByNome_sede" method="searchSedeByNome_sede" class="it_progetto_tsw2.anagrafica.ServiceSedeAction"> 
 			<result name="success" type="dispatcher">/jsp/searchSedeByNome_sede.jsp</result>
 		</action>
 		
-		<action name="searchSedeByExample" method="searchSedeByExample" class="it_progetto_tsw2.ServiceSedeAction"> 
+		<action name="searchSedeByExample" method="searchSedeByExample" class="it_progetto_tsw2.anagrafica.ServiceSedeAction"> 
 			<result name="success" type="dispatcher">/jsp/allSede.jsp</result>
 		</action>
 		
-		<action name="campiSede" class="it_progetto_tsw2.CampiSedeAction">
+		<action name="campiSede" class="it_progetto_tsw2.anagrafica.CampiSedeAction">
 			<result name="success" type="dispatcher">/jsp/campiSede.jsp</result>
 		</action>
 		
-		<action name="newSede" method="insertSede" class="it_progetto_tsw2.ServiceSedeAction" >
+		<action name="newSede" method="insertSede" class="it_progetto_tsw2.anagrafica.ServiceSedeAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allSede</result>
 		</action>
 		
-		<action name="deleteSede" method="deleteSede" class="it_progetto_tsw2.ServiceSedeAction" > 
+		<action name="deleteSede" method="deleteSede" class="it_progetto_tsw2.anagrafica.ServiceSedeAction" > 
 			<result name="success" type="redirectAction">allSede</result>
 		</action>
 		
-		<action name="updateSede" method="updateSede" class="it_progetto_tsw2.ServiceSedeAction" > 
+		<action name="updateSede" method="updateSede" class="it_progetto_tsw2.anagrafica.ServiceSedeAction" > 
 			<result name="success" type="redirectAction">allSede</result>
 		</action>
 		
@@ -122,32 +158,32 @@
 		
 		<!-- Flusso Promozione  -->
 		
-		<action name="allPromozione" method="searchAllPromozione" class="it_progetto_tsw2.ServicePromozioneAction"> 
+		<action name="allPromozione" method="searchAllPromozione" class="it_progetto_tsw2.anagrafica.ServicePromozioneAction"> 
 			<result name="success" >/jsp/allPromozione.jsp</result>
 		</action>
 		
-		<action name="searchPromozioneByNome_promozione" method="searchPromozioneByNome_promozione" class="it_progetto_tsw2.ServicePromozioneAction"> 
+		<action name="searchPromozioneByNome_promozione" method="searchPromozioneByNome_promozione" class="it_progetto_tsw2.anagrafica.ServicePromozioneAction"> 
 			<result name="success" type="dispatcher">/jsp/searchPromozioneByNome_promozione.jsp</result>
 		</action>
 		
-		<action name="searchPromozioneByExample" method="searchPromozioneByExample" class="it_progetto_tsw2.ServicePromozioneAction"> 
+		<action name="searchPromozioneByExample" method="searchPromozioneByExample" class="it_progetto_tsw2.anagrafica.ServicePromozioneAction"> 
 			<result name="success" type="dispatcher">/jsp/allPromozione.jsp</result>
 		</action>
 		
-		<action name="campiPromozione" class="it_progetto_tsw2.CampiPromozioneAction">
+		<action name="campiPromozione" class="it_progetto_tsw2.anagrafica.CampiPromozioneAction">
 			<result name="success" type="dispatcher">/jsp/campiPromozione.jsp</result>
 		</action>
 		
-		<action name="newPromozione" method="insertPromozione" class="it_progetto_tsw2.ServicePromozioneAction" >
+		<action name="newPromozione" method="insertPromozione" class="it_progetto_tsw2.anagrafica.ServicePromozioneAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allPromozione</result>
 		</action>
 		
-		<action name="deletePromozione" method="deletePromozione" class="it_progetto_tsw2.ServicePromozioneAction" > 
+		<action name="deletePromozione" method="deletePromozione" class="it_progetto_tsw2.anagrafica.ServicePromozioneAction" > 
 			<result name="success" type="redirectAction">allPromozione</result>
 		</action>
 		
-		<action name="updatePromozione" method="updatePromozione" class="it_progetto_tsw2.ServicePromozioneAction" > 
+		<action name="updatePromozione" method="updatePromozione" class="it_progetto_tsw2.anagrafica.ServicePromozioneAction" > 
 			<result name="success" type="redirectAction">allPromozione</result>
 		</action>
 		
@@ -155,32 +191,32 @@
 		
 		<!-- Flusso Assicurazione  -->
 		
-		<action name="allAssicurazione" method="searchAllAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction"> 
+		<action name="allAssicurazione" method="searchAllAssicurazione" class="it_progetto_tsw2.anagrafica.ServiceAssicurazioneAction"> 
 			<result name="success" >/jsp/allAssicurazione.jsp</result>
 		</action>
 		
-		<action name="searchAssicurazioneByNome_assicurazione" method="searchAssicurazioneByNome_assicurazione" class="it_progetto_tsw2.ServiceOptionalAction"> 
+		<action name="searchAssicurazioneByNome_assicurazione" method="searchAssicurazioneByNome_assicurazione" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction"> 
 			<result name="success" type="dispatcher">/jsp/searchAssicurazioneByNome_assicurazione.jsp</result>
 		</action>
 		
-		<action name="searchAssicurazioneByExample" method="searchAssicurazioneByExample" class="it_progetto_tsw2.ServiceAssicurazioneAction"> 
+		<action name="searchAssicurazioneByExample" method="searchAssicurazioneByExample" class="it_progetto_tsw2.anagrafica.ServiceAssicurazioneAction"> 
 			<result name="success" type="dispatcher">/jsp/allAssicurazione.jsp</result>
 		</action>
 		
-		<action name="campiAssicurazione" class="it_progetto_tsw2.CampiAssicurazioneAction">
+		<action name="campiAssicurazione" class="it_progetto_tsw2.anagrafica.CampiAssicurazioneAction">
 			<result name="success" type="dispatcher">/jsp/campiAssicurazione.jsp</result>
 		</action>
 		
-		<action name="newAssicurazione" method="insertAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction" >
+		<action name="newAssicurazione" method="insertAssicurazione" class="it_progetto_tsw2.anagrafica.ServiceAssicurazioneAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allAssicurazione</result>
 		</action>
 		
-		<action name="deleteAssicurazione" method="deleteAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction" > 
+		<action name="deleteAssicurazione" method="deleteAssicurazione" class="it_progetto_tsw2.anagrafica.ServiceAssicurazioneAction" > 
 			<result name="success" type="redirectAction">allAssicurazione</result>
 		</action>
 		
-		<action name="updateAssicurazione" method="updateAssicurazione" class="it_progetto_tsw2.ServiceAssicurazioneAction" > 
+		<action name="updateAssicurazione" method="updateAssicurazione" class="it_progetto_tsw2.anagrafica.ServiceAssicurazioneAction" > 
 			<result name="success" type="redirectAction">allAssicurazione</result>
 		</action>
 		
@@ -188,32 +224,32 @@
 		
 		<!-- Flusso Pratica  -->
 		
-		<action name="allPratica" method="searchAllPratica" class="it_progetto_tsw2.ServicePraticaAction"> 
+		<action name="allPratica" method="searchAllPratica" class="it_progetto_tsw2.anagrafica.ServicePraticaAction"> 
 			<result name="success" >/jsp/allPratica.jsp</result>
 		</action>
 		
-		<action name="searchPraticaByNome_pratica" method="searchPraticaByNome_pratica" class="it_progetto_tsw2.ServicePraticaAction"> 
+		<action name="searchPraticaByNome_pratica" method="searchPraticaByNome_pratica" class="it_progetto_tsw2.anagrafica.ServicePraticaAction"> 
 			<result name="success" type="dispatcher">/jsp/searchPraticaByNome_pratica.jsp</result>
 		</action>
 		
-		<action name="searchPraticaByExample" method="searchPraticaByExample" class="it_progetto_tsw2.ServicePraticaAction"> 
+		<action name="searchPraticaByExample" method="searchPraticaByExample" class="it_progetto_tsw2.anagrafica.ServicePraticaAction"> 
 			<result name="success" type="dispatcher">/jsp/allPratica.jsp</result>
 		</action>
 		
-		<action name="campiPratica" class="it_progetto_tsw2.CampiPraticaAction">
+		<action name="campiPratica" class="it_progetto_tsw2.anagrafica.CampiPraticaAction">
 			<result name="success" type="dispatcher">/jsp/campiPratica.jsp</result>
 		</action>
 		
-		<action name="newPratica" method="insertPratica" class="it_progetto_tsw2.ServicePraticaAction" >
+		<action name="newPratica" method="insertPratica" class="it_progetto_tsw2.anagrafica.ServicePraticaAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allPratica</result>
 		</action>
 		
-		<action name="deletePratica" method="deletePratica" class="it_progetto_tsw2.ServicePraticaAction" > 
+		<action name="deletePratica" method="deletePratica" class="it_progetto_tsw2.anagrafica.ServicePraticaAction" > 
 			<result name="success" type="redirectAction">allPratica</result>
 		</action>
 		
-		<action name="updatePratica" method="updatePratica" class="it_progetto_tsw2.ServicePraticaAction" > 
+		<action name="updatePratica" method="updatePratica" class="it_progetto_tsw2.anagrafica.ServicePraticaAction" > 
 			<result name="success" type="redirectAction">allPratica</result>
 		</action>
 		
@@ -221,32 +257,32 @@
 		
 		<!-- Flusso Veicolo  -->
 		
-		<action name="allVeicolo" method="searchAllVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction"> 
+		<action name="allVeicolo" method="searchAllVeicolo" class="it_progetto_tsw2.anagrafica.ServiceVeicoloAction"> 
 			<result name="success" >/jsp/allVeicolo.jsp</result>
 		</action>
 		
-		<action name="searchVeicoloByNome_veicolo" method="searchVeicoloByNome_veicolo" class="it_progetto_tsw2.ServiceVeicoloAction"> 
+		<action name="searchVeicoloByNome_veicolo" method="searchVeicoloByNome_veicolo" class="it_progetto_tsw2.anagrafica.ServiceVeicoloAction"> 
 			<result name="success" type="dispatcher">/jsp/searchVeicoloByNome_veicolo.jsp</result>
 		</action>
 		
-		<action name="searchVeicoloByExample" method="searchVeicoloByExample" class="it_progetto_tsw2.ServiceVeicoloAction"> 
+		<action name="searchVeicoloByExample" method="searchVeicoloByExample" class="it_progetto_tsw2.anagrafica.ServiceVeicoloAction"> 
 			<result name="success" type="dispatcher">/jsp/allVeicolo.jsp</result>
 		</action>
 		
-		<action name="campiVeicolo" class="it_progetto_tsw2.CampiVeicoloAction">
+		<action name="campiVeicolo" class="it_progetto_tsw2.anagrafica.CampiVeicoloAction">
 			<result name="success" type="dispatcher">/jsp/campiVeicolo.jsp</result>
 		</action>
 		
-		<action name="newVeicolo" method="insertVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction" >
+		<action name="newVeicolo" method="insertVeicolo" class="it_progetto_tsw2.anagrafica.ServiceVeicoloAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allVeicolo</result>
 		</action>
 		
-		<action name="deleteVeicolo" method="deleteVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction" > 
+		<action name="deleteVeicolo" method="deleteVeicolo" class="it_progetto_tsw2.anagrafica.ServiceVeicoloAction" > 
 			<result name="success" type="redirectAction">allVeicolo</result>
 		</action>
 		
-		<action name="updateVeicolo" method="updateVeicolo" class="it_progetto_tsw2.ServiceVeicoloAction" > 
+		<action name="updateVeicolo" method="updateVeicolo" class="it_progetto_tsw2.anagrafica.ServiceVeicoloAction" > 
 			<result name="success" type="redirectAction">allVeicolo</result>
 		</action>
 		
@@ -254,32 +290,32 @@
 		
 		<!-- Flusso Cliente  -->
 		
-		<action name="allCliente" method="searchAllCliente" class="it_progetto_tsw2.ServiceClienteAction"> 
+		<action name="allCliente" method="searchAllCliente" class="it_progetto_tsw2.anagrafica.ServiceClienteAction"> 
 			<result name="success" >/jsp/allCliente.jsp</result>
 		</action>
 		
-		<action name="searchClienteByCF_cliente" method="searchClienteByCF_cliente" class="it_progetto_tsw2.ServiceClienteAction"> 
+		<action name="searchClienteByCF_cliente" method="searchClienteByCF_cliente" class="it_progetto_tsw2.anagrafica.ServiceClienteAction"> 
 			<result name="success" type="dispatcher">/jsp/searchClienteByNome_cliente.jsp</result>
 		</action>
 		
-		<action name="searchClienteByExample" method="searchClienteByExample" class="it_progetto_tsw2.ServiceClienteAction"> 
+		<action name="searchClienteByExample" method="searchClienteByExample" class="it_progetto_tsw2.anagrafica.ServiceClienteAction"> 
 			<result name="success" type="dispatcher">/jsp/allCliente.jsp</result>
 		</action>
 		
-		<action name="campiCliente" class="it_progetto_tsw2.CampiClienteAction">
+		<action name="campiCliente" class="it_progetto_tsw2.anagrafica.CampiClienteAction">
 			<result name="success" type="dispatcher">/jsp/campiCliente.jsp</result>
 		</action>
 		
-		<action name="newCliente" method="insertCliente" class="it_progetto_tsw2.ServiceClienteAction" >
+		<action name="newCliente" method="insertCliente" class="it_progetto_tsw2.anagrafica.ServiceClienteAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allCliente</result>
 		</action>
 		
-		<action name="deleteCliente" method="deleteCliente" class="it_progetto_tsw2.ServiceClienteAction" > 
+		<action name="deleteCliente" method="deleteCliente" class="it_progetto_tsw2.anagrafica.ServiceClienteAction" > 
 			<result name="success" type="redirectAction">allCliente</result>
 		</action>
 		
-		<action name="updateCliente" method="updateCliente" class="it_progetto_tsw2.ServiceClienteAction" > 
+		<action name="updateCliente" method="updateCliente" class="it_progetto_tsw2.anagrafica.ServiceClienteAction" > 
 			<result name="success" type="redirectAction">allCliente</result>
 		</action>
 		
@@ -287,44 +323,38 @@
 		
 		<!-- Flusso Staff  -->
 		
-		<action name="allStaff" method="searchAllStaff" class="it_progetto_tsw2.ServiceStaffAction"> 
+		<action name="allStaff" method="searchAllStaff" class="it_progetto_tsw2.anagrafica.ServiceStaffAction"> 
 			<result name="success" >/jsp/allStaff.jsp</result>
 		</action>
 		
-		<action name="searchStaffByCF_staff" method="searchStaffByCF_staff" class="it_progetto_tsw2.ServiceStaffAction"> 
+		<action name="searchStaffByCF_staff" method="searchStaffByCF_staff" class="it_progetto_tsw2.anagrafica.ServiceStaffAction"> 
 			<result name="success" type="dispatcher">/jsp/searchStaffByNome_staff.jsp</result>
 		</action>
 		
-		<action name="searchStaffByExample" method="searchStaffByExample" class="it_progetto_tsw2.ServiceStaffAction"> 
+		<action name="searchStaffByExample" method="searchStaffByExample" class="it_progetto_tsw2.anagrafica.ServiceStaffAction"> 
 			<result name="success" type="dispatcher">/jsp/allStaff.jsp</result>
 		</action>
 		
-		<action name="campiStaff" class="it_progetto_tsw2.CampiStaffAction">
+		<action name="campiStaff" class="it_progetto_tsw2.anagrafica.CampiStaffAction">
 			<result name="success" type="dispatcher">/jsp/campiStaff.jsp</result>
 		</action>
 		
-		<action name="newStaff" method="insertStaff" class="it_progetto_tsw2.ServiceStaffAction" >
+		<action name="newStaff" method="insertStaff" class="it_progetto_tsw2.anagrafica.ServiceStaffAction" >
 			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allStaff</result>
 		</action>
 		
-		<action name="deleteStaff" method="deleteStaff" class="it_progetto_tsw2.ServiceStaffAction" > 
+		<action name="deleteStaff" method="deleteStaff" class="it_progetto_tsw2.anagrafica.ServiceStaffAction" > 
 			<result name="success" type="redirectAction">allStaff</result>
 		</action>
 		
-		<action name="updateStaff" method="updateStaff" class="it_progetto_tsw2.ServiceStaffAction" > 
+		<action name="updateStaff" method="updateStaff" class="it_progetto_tsw2.anagrafica.ServiceStaffAction" > 
 			<result name="success" type="redirectAction">allStaff</result>
 		</action>
 		
 		<!-- END Flusso Staff  -->
 		
-		
-		
-	
-		
-	
-		
-		
+			
 		
 	</package>
 </struts>

@@ -2,7 +2,7 @@ package it_progetto_tsw2.services;
 
 import java.util.List;
 
-import it_progetto_tsw2_hibernate.Assicurazione;;
+import it_progetto_tsw2_hibernate.Assicurazione;
 
 public interface AssicurazioneService 
 {

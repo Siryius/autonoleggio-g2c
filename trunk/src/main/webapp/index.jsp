@@ -1,2 +1,2 @@
 
-<% response.sendRedirect("jsp/menu.jsp"); %>
+<% response.sendRedirect("index.action"); %>

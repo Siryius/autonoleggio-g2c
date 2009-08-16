@@ -12,9 +12,9 @@ import org.hibernate.Session;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Restrictions;
 
-import util.HibernateUtil;
 
 import it_progetto_tsw2.services.AssicurazioneService;
+import it_progetto_tsw2.util.HibernateUtil;
 import it_progetto_tsw2_hibernate.Assicurazione;
 
 public class AssicurazioneServiceImpl implements AssicurazioneService  
