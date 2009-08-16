@@ -22,7 +22,6 @@
 			<property name="via" type="string" column="VIA"/>
 			<property name="CAP" type="string" column="CAP"/>
 			<property name="n_civico" type="string" column="N_CIVICO"/>
-			<property name="stato" type="string" column="STATO"/>
 			<property name="citta" type="string" column="CITTA"/>
 			<property name="provincia" type="string" column="PROVINCIA"/>	
 		</component>
@@ -37,7 +36,7 @@
 		<joined-subclass name="it_progetto_tsw2_hibernate.Cliente" table="CLIENTE">
 			<key column="ID_CLIENTE"/>
 			
-			<property name="cartaCredito_cliente" type="string" column="CARTACREDITO_CARTACLIENTE"/>
+			<property name="cartaCredito_cliente" type="string" column="CARTACREDITO_CLIENTE"/>
 			<property name="tipologia_cliente" type="string" column="TIPOLOGIA_CLIENTE"/>
 			<property name="validita_cliente" type="date" column="VALIDITA_CLIENTE"/>
 			

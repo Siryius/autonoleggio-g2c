@@ -6,7 +6,7 @@
 
 <struts>
 	<constant name="struts.codebehind.defaultPackage" value="base-package" />
-	<constant name="struts.codebehind.pathPrefix" value="/jsp/" />
+    <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/jsp/"/>
 
 	<package name="base-package" extends="struts-default">
 	
@@ -74,9 +74,7 @@
 		</action>
 		
 		<action name="newOptional" method="insertOptional" class="it_progetto_tsw2.anagrafica.ServiceOptionalAction" >
-			<interceptor-ref name="paramsPrepareParamsStack" >
-				<param name="validation.validateAnnotatedMethodOnly">true</param>
-			</interceptor-ref>
+			<interceptor-ref name="paramsPrepareParamsStack" />
 			<result name="success" type="redirectAction">allOptional</result>
 		</action>
 		

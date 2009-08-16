@@ -10,7 +10,6 @@ import it_progetto_tsw2.util.SecurityInterceptor;
 import it_progetto_tsw2.services.UtenteService;
 import it_progetto_tsw2.services.UtenteServiceImpl;
 
-
 public class LogonAction extends BaseAction implements ServletRequestAware
 {
 	private String login;
