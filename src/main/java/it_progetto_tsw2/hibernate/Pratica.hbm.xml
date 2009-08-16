@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it_progetto_tsw2_hibernate.Pratica" table="PRATICA">
+	
+		<id name="id_pratica" column="ID_PRATICA">
+			<generator class="native"/>
+		</id>
+		<property name="nome_pratica" type="string" column="NOME_PRATICA" unique="true" not-null="true"/>
+		<property name="descrizione_pratica" type="string" column="DESCRIZIONE_PRATICA"/>
+		<property name="scadenza_pratica" type="date" column="SCADENZA_PRATICA"/>
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<many-to-one name="veicolo" column="FKID_VEICOLO" class="it_progetto_tsw2_hibernate.Veicolo" not-null="true"/>
+		
+	</class>
+</hibernate-mapping>

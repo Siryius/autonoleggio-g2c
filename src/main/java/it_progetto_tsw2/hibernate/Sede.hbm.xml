@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it_progetto_tsw2_hibernate.Sede" table="SEDE">
+	
+		<id name="id_sede" column="ID_SEDE">
+			<generator class="native"/>
+		</id>
+		<property name="nome_sede" type="string" column="NOME_SEDE" unique="true" not-null="true"/>
+			
+		<!-- mappiamo ora le composizioni -->
+		
+		<component name="orari_sede"  class="it_progetto_tsw2_hibernate.Orario">
+			<property name="apertura_matt" type="float" column="APERTURA_MATT"/>
+			<property name="chiusura_matt" type="float" column="CHIUSURA_MATT"/>
+			<property name="apertura_pom" type="float" column="APERTURA_POM"/>
+			<property name="chiusura_pom" type="float" column="CHIUSURA_POM"/>
+		</component>
+		
+		<component name="indirizzo_sede"  class="it_progetto_tsw2_hibernate.Indirizzo">
+			<property name="via" type="string" column="VIA"/>
+			<property name="CAP" type="string" column="CAP"/>
+			<property name="n_civico" type="string" column="N_CIVICO"/>
+			<property name="stato" type="string" column="STATO"/>
+			<property name="citta" type="string" column="CITTA"/>
+			<property name="provincia" type="string" column="PROVINCIA"/>	
+		</component>
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<set name="veicoli" inverse="true">
+        	<key column="ID_VEICOLO"/>
+        	<one-to-many class="it_progetto_tsw2_hibernate.Veicolo"/>
+        </set>
+        
+        <!--  <set name="sedi" table="SEDE_SEDE" lazy="true" inverse="true" cascade="save-update">
+        	<key column="ID_SEDE"/>
+        	<many-to-many class="bean_hibernate.Sede" column="ID_SEDE"/>
+        </set> --> 
+        
+        
+        <set name="sedi" table="SEDE_SEDE" lazy="true" inverse="true" cascade="save-update">
+        	<key column="ID_SEDE1"/>
+        	<composite-element class="it_progetto_tsw2_hibernate.SedeSede">
+        		<parent name="sede1"/>
+        		<many-to-one name="sede2" class="it_progetto_tsw2_hibernate.Sede" column="ID_SEDE2" not-null="true"/>
+        		<!-- <many-to-one name="sede2" class="it_progetto_tsw2_hibernate.Sede" column="ID_SEDE2" not-null="true"/> -->
+        		<property name="km" column="KM" not-null="true"/>
+        	</composite-element>
+        </set>
+        
+        
+        <set name="promozioni" table="SEDE_PROMOZIONE" lazy="true" inverse="true" cascade="save-update">
+        	<key column="ID_SEDE"/>
+        	<many-to-many class="it_progetto_tsw2_hibernate.Sede" column="ID_PROMOZIONE"/>
+        </set>
+        
+        <set name="prenotazioni" table="SEDE_PRENOTAZIONE" lazy="true" inverse="true" cascade="save-update">
+        	<key column="ID_SEDE"/>
+        	<many-to-many class="it_progetto_tsw2_hibernate.Sede" column="ID_PRENOTAZIONE"/>
+        </set>
+        
+        	
+		
+	</class>
+</hibernate-mapping>

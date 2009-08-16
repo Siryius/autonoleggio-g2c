@@ -3,7 +3,7 @@ package it_progetto_tsw2.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import it_progetto_tsw2_hibernate.Promozione;;
+import it_progetto_tsw2_hibernate.Promozione;
 
 public interface PromozioneService
 {

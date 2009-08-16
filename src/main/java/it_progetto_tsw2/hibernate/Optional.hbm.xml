@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it_progetto_tsw2_hibernate.Optional" table="OPTIONAL">
+	
+		<id name="id_optional" column="ID_OPTIONAL">
+			<generator class="native"/>
+		</id>
+		<property name="nome_optional" type="string" column="NOME_OPTIONAL" unique="true" not-null="true" />
+		<property name="descrizione_optional" type="string" column="DESCRIZIONE_OPTIONAL"/>
+		<property name="supplemento_optional" type="float" column="SUPPLEMENTO_OPTIONAL"/>
+		
+		<!-- mappiamo ora le associazioni -->
+
+        <set name="veicoli" table="VEICOLO_OPTIONAL" lazy="true" inverse="true" cascade="save-update">
+        	<key column="ID_OPTIONAL"/>
+        	<many-to-many class="it_progetto_tsw2_hibernate.Optional" column="ID_VEICOLO"/>
+        </set>
+        		
+	</class>
+</hibernate-mapping>

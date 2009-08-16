@@ -13,12 +13,11 @@ import org.hibernate.criterion.*;
 
 
 import it_progetto_tsw2.services.*;
+import it_progetto_tsw2.util.*;
 import it_progetto_tsw2_hibernate.Sede;
-import util.HibernateUtil;
 
 import java.util.*;
 
-import util.*;
 
 public class SedeServiceImpl implements SedeService
 {
