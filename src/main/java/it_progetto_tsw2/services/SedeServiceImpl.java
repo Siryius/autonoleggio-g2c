@@ -66,8 +66,8 @@ public class SedeServiceImpl implements SedeService
 			session = util.getSessionFactory().getCurrentSession();	
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Sede.class);
-			criteria.add( Example.create(sede).excludeZeroes() );
-			List result = criteria.list();
+			criteria.add( Example.create(sede).excludeZeroes().ignoreCase().enableLike(MatchMode.ANYWHERE) );
+			list = criteria.list();
 			session.getTransaction().commit();
 		}
 		catch(Exception e)

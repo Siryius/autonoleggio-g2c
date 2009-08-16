@@ -8,11 +8,13 @@ import it_progetto_tsw2.services.*;
 import it_progetto_tsw2_hibernate.*;
 
 import java.util.*;
+import org.apache.struts2.config.ParentPackage;
 
+@ParentPackage("base-package")
 @Validation
 public class ServiceOptionalAction extends BaseOptionalAction 
 {
-	//@Validations( visitorFields = { @VisitorFieldValidator(message = "", fieldName= "model", appendPrefix = true) } )
+	//@Validations( visitorFields = { @VisitorFieldValidator(message = "Default message", fieldName= "model", appendPrefix = false) } )
 	public String insertOptional()throws Exception 
 	{
 	    Optional tmp_optional=super.getOptional();
