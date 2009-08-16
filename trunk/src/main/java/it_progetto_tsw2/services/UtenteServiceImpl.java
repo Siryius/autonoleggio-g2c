@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 public class UtenteServiceImpl implements UtenteService
@@ -95,8 +96,8 @@ public class UtenteServiceImpl implements UtenteService
 			session = util.getSessionFactory().getCurrentSession();	
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Utente.class);
-			criteria.add( Example.create(utente).excludeZeroes() );
-			List result = criteria.list();
+			criteria.add( Example.create(utente).excludeZeroes().ignoreCase().enableLike(MatchMode.ANYWHERE) );
+			list = criteria.list();
 			session.getTransaction().commit();
 		}
 		catch(Exception e)

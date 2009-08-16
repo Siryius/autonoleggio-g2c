@@ -8,6 +8,7 @@ import java.util.List;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
 
@@ -96,8 +97,8 @@ public class PraticaServiceImpl implements PraticaService
 			session = util.getSessionFactory().getCurrentSession();	
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Pratica.class);
-			criteria.add( Example.create(pratica).excludeZeroes() );
-			List result = criteria.list();
+			criteria.add( Example.create(pratica).excludeZeroes().ignoreCase().enableLike(MatchMode.ANYWHERE) );
+			list = criteria.list();
 			session.getTransaction().commit();
 		}
 		catch(Exception e)

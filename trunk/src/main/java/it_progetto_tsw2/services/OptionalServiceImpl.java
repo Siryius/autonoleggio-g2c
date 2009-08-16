@@ -105,13 +105,7 @@ public class OptionalServiceImpl implements OptionalService
 			session.beginTransaction();
 			Criteria criteria = session.createCriteria(Optional.class);
 			criteria.add( Example.create(optional).excludeZeroes().ignoreCase().enableLike(MatchMode.ANYWHERE) );
-			System.out.println(optional.getNome_optional());
-			System.out.println(optional.getDescrizione_optional());
-			System.out.println(optional.getSupplemento_optional());
 			list = criteria.list();
-			System.out.println(list.size());
-			Optional op=(Optional)list.get(0);
-			System.out.println(op.getNome_optional());
 			session.getTransaction().commit();
 		}
 		catch(Exception e)
