@@ -14,8 +14,8 @@
 	<s:form name="ricerca_form" action="searchClienteByExample">
 	
 		<s:textfield  name="CF_utente" label="Codice Fiscale"/>	
-		<s:textfield  name="nome_utente" label="Nome"/>
-		<s:textfield  name="cognome_utente" label="Cognome"/>
+		<s:textfield  name="nome_cliente" label="Nome"/>
+		<s:textfield  name="cognome_cliente" label="Cognome"/>
 		<s:textfield  name="login_utente" label="Login"/>
 		<s:textfield  name="password_utente" label="Password"/>
 		<s:textfield  name="indirizzo_utente.via" label="Via"/>
@@ -45,8 +45,8 @@
 			</td>
 			
 			<td> <s:property value="cf_utente"/>  </td> 
-			<td> <s:property value="nome_utente"/>  </td>
-			<td> <s:property value="cognome_utente"/> </td>
+			<td> <s:property value="nome_cliente"/>  </td>
+			<td> <s:property value="cognome_cliente"/> </td>
 			<td> <s:property value="tipologia_cliente"/> </td>
 			
 			<td>

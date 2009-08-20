@@ -14,8 +14,8 @@
 		<s:textfield label="ID" name="model.id_utente"/>
 		
 		<s:textfield  name="model.CF_utente" label="Codice Fiscale"/>	
-		<s:textfield  name="model.nome_utente" label="Nome"/>
-		<s:textfield  name="model.cognome_utente" label="Cognome"/>
+		<s:textfield  name="model.nome_cliente" label="Nome"/>
+		<s:textfield  name="model.cognome_cliente" label="Cognome"/>
 		<s:textfield  name="model.login_utente" label="Login"/>
 		<s:textfield  name="model.password_utente" label="Password"/>
 		<s:textfield  name="model.indirizzo_utente.via" label="Via"/>

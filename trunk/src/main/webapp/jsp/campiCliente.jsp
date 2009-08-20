@@ -13,8 +13,8 @@
 	<s:form action="newCliente" method="post" enctype="multipart/form-data">
 			
 		<s:textfield  name="CF_utente" label="Codice Fiscale" required="true"/>	
-		<s:textfield  name="nome_utente" label="Nome" required="true"/>
-		<s:textfield  name="cognome_utente" label="Cognome" required="true"/>
+		<s:textfield  name="nome_cliente" label="Nome" required="true"/>
+		<s:textfield  name="cognome_cliente" label="Cognome" required="true"/>
 		<s:textfield  name="login_utente" label="Login" required="true"/>
 		<s:textfield  name="password_utente" label="Password" required="true"/>
 		<s:textfield  name="indirizzo_utente.via" label="Via" required="true"/>

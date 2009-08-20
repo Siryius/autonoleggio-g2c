@@ -93,13 +93,16 @@
 		</action>
 		
 		<action name="selectSede" class="it_progetto_tsw2.actions.veicolo.SelectSedeAction" >
-			<result name="success" type="redirectAction">selectSede</result>
+			<result name="success" type="redirectAction">selectOptional</result>
 		</action>
 		
 		<action name="selectOptional" class="it_progetto_tsw2.actions.veicolo.SelectOptionalAction" >
-			<result name="success" type="redirectAction">selectSede</result>
+			<result name="success" type="redirectAction">saveVeicolo</result>
 		</action>
 		
+		<action name="saveVeicolo" class="it_progetto_tsw2.actions.veicolo.SaveVeicoloAction" >
+			<result name="success" type="redirectAction"></result>
+		</action>
 		
 		</package>
 		
