@@ -40,8 +40,7 @@ public class TestManager
 	        utenteInd.setVia("Via Napoli");
 	        Utente utente= new Utente();
 	        utente.setCF_utente("AAAAA");
-	        utente.setCognome_utente("Carotenuto");
-	        utente.setNome_utente("Claudio");
+	
 	        utente.setIndirizzo_utente(utenteInd);
 	        
 	        session.save(utente);

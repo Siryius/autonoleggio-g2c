@@ -10,9 +10,6 @@
 			<generator class="native"/>
 		</id>
 		<property name="CF_utente" type="string" column="CF_UTENTE" unique="true" not-null="true"/>
-		<property name="nome_utente" type="string" column="NOME_UTENTE"/>
-		<property name="cognome_utente" type="string" column="COGNOME_UTENTE"/>
-		
 		<property name="login_utente" type="string" column="LOGIN_UTENTE"/>
 		<property name="password_utente" type="string" column="PASSWORD_UTENTE"/>
 			
@@ -30,12 +27,16 @@
 		
 		<joined-subclass name="it_progetto_tsw2_hibernate.Staff" table="STAFF">
 			<key column="ID_STAFF"/>
+			<property name="nome_staff" type="string" column="NOME_STAFF"/>
+			<property name="cognome_staff" type="string" column="COGNOME_STAFF"/>
 			<property name="competenza_staff" type="string" column="COMPETENZA_STAFF" not-null="true"/>
 		</joined-subclass>
 		
 		<joined-subclass name="it_progetto_tsw2_hibernate.Cliente" table="CLIENTE">
 			<key column="ID_CLIENTE"/>
 			
+			<property name="nome_cliente" type="string" column="NOME_CLIENTE"/>
+			<property name="cognome_cliente" type="string" column="COGNOME_CLIENTE"/>
 			<property name="cartaCredito_cliente" type="string" column="CARTACREDITO_CLIENTE"/>
 			<property name="tipologia_cliente" type="string" column="TIPOLOGIA_CLIENTE"/>
 			<property name="validita_cliente" type="date" column="VALIDITA_CLIENTE"/>
@@ -45,6 +46,20 @@
         		<one-to-many class="it_progetto_tsw2_hibernate.Prenotazione"/>	
         	</set>
 			
+		</joined-subclass>
+		
+		<joined-subclass name="it_progetto_tsw2_hibernate.Azienda" table="AZIENDA">
+			<key column="ID_AZIENDA"/>
+			<property name="ragionesociale_azienda" type="string" column="RAGIONESOCIALE_AZIENDA" not-null="true"/>
+			<property name="partitaiva_azienda" type="string" column="PARTITAIVA_AZIENDA" not-null="true"/>
+			
+			<component name="indirizzo_operativo"  class="it_progetto_tsw2_hibernate.Indirizzo">
+			<property name="via" type="string" column="VIA"/>
+			<property name="CAP" type="string" column="CAP"/>
+			<property name="n_civico" type="string" column="N_CIVICO"/>
+			<property name="citta" type="string" column="CITTA"/>
+			<property name="provincia" type="string" column="PROVINCIA"/>	
+			</component>
 		</joined-subclass>
         	
 		
