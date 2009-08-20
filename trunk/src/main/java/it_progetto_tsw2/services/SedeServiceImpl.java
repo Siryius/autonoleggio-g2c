@@ -14,6 +14,7 @@ import org.hibernate.criterion.*;
 
 import it_progetto_tsw2.services.*;
 import it_progetto_tsw2.util.*;
+import it_progetto_tsw2_hibernate.Categoria;
 import it_progetto_tsw2_hibernate.Sede;
 
 import java.util.*;
@@ -177,6 +178,26 @@ public class SedeServiceImpl implements SedeService
 		}
 		
 		return ris;
+	}
+	
+	public Sede findById(Long id_sede)
+	{
+		Sede sede=null;
+		
+		try
+		{
+			session = util.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			sede=(Sede)session.get(Sede.class, id_sede);
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Errore SedeServiceImpl findById");
+			e.printStackTrace();
+		}
+		
+		return sede;
 	}
 	
 }
