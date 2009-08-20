@@ -134,9 +134,9 @@ public class VeicoloServiceImpl implements VeicoloService
 		boolean ris=true;
 		try
 		{
-			Veicolo temp_veicolo=null;
-			temp_veicolo=findByNome_veicolo(nome_veicolo);
-			if(temp_veicolo==null)
+			Veicolo tmp_veicolo=null;
+			tmp_veicolo=findByNome_veicolo(nome_veicolo);
+			if(tmp_veicolo==null)
 			{	
 				session = util.getSessionFactory().getCurrentSession();
 				session.beginTransaction();
@@ -201,7 +201,7 @@ public class VeicoloServiceImpl implements VeicoloService
 				tmp_veicolo.setCilindrata_veicolo(veicolo.getCilindrata_veicolo());
 				tmp_veicolo.setDisponibile_veicolo(veicolo.getDisponibile_veicolo());
 				tmp_veicolo.setImmatricolazione_veicolo(veicolo.getImmatricolazione_veicolo());
-				tmp_veicolo.setnPosti_veicolo(veicolo.getnPosti_veicolo());
+				tmp_veicolo.setNposti_veicolo(veicolo.getNposti_veicolo());
 				tmp_veicolo.setPortata_veicolo(veicolo.getPortata_veicolo());
 				tmp_veicolo.setTarga_veicolo(veicolo.getTarga_veicolo());
 				tmp_veicolo.setTipo_veicolo(veicolo.getTipo_veicolo());
