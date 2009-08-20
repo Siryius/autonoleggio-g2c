@@ -20,11 +20,25 @@
 		<s:textfield  name="nposti_veicolo" label="N° Posti" required="true"/>
 		<s:textfield  name="cilindrata_veicolo" label="Cilindrata" required="true"/>
 		<s:textfield  name="disponibile_veicolo" label="Disponibilita" required="true"/>
-		<s:textfield  name="immatricolazione_veicolo" label="Immatricolazione" required="true"/>
+		<s:datetimepicker  name="immatricolazione_veicolo" label="Immatricolazione" required="true"/>
 		<s:textfield  name="cambio_veicolo" label="Cambio" required="true"/>
 		<s:textfield  name="alimentazione_veicolo" label="Alimentazione" required="true"/>
 		<s:textfield  name="portata_veicolo" label="Portata" required="true"/>
 		<s:textfield  name="bagagliaio_veicolo" label="Bagagliaio" required="true"/>
+		
+		<table border="1">
+			<tr> <th>Sel </th> <th>Nome</th> <th>Descrizione</th> <th>Supplemento</th> </tr>
+			<s:iterator value="allOptionalIterator">
+		
+			<tr> 
+				<td> <s:checkbox name="checkOptional" label="Sel" fieldValue="id_optional"/> </td>
+				<td> <s:property value="nome_optional"/>  </td> 
+				<td> <s:property value="descrizione_optional"/>  </td>
+				<td> <s:property value="supplemento_optional"/> </td>
+				 
+			</tr>
+			</s:iterator>
+		</table>
 		
 		<s:submit key="Register" value="Register"/>
 	</s:form>

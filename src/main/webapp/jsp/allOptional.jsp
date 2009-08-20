@@ -45,7 +45,7 @@
 	</s:iterator>
 	</table>
 	
-	<input type="button" value="New Optional" onclick="javascript:location.href='/autonoleggioG2C/jsp/campiOptional.action'" />
-	
+	<input type="button" value="New Optional" onclick="javascript:location.href='campiOptional.action'" />
+	<a href="campiOptional.action"> Optional </a>
 </body>
 </html>

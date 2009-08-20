@@ -21,6 +21,9 @@
 	<tr><td><a href="allVeicolo.action"> Veicolo </a></td></tr>
 	<tr><td><a href="allCliente.action"> Cliente </a></td></tr>
 	<tr><td><a href="allStaff.action"> Staff </a></td></tr>
+	
+	<s:url id="addVeicoloFlow" action="addVeicoloFlow" namespace="/veicolo" />
+	<tr><td><s:a href="%{addVeicoloFlow}"><s:text name="link.completeVeicolo" />Veicolo</s:a></td></tr>
 	</table>
 </body>
 </html>
