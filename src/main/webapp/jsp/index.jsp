@@ -13,7 +13,14 @@ Released for free under a Creative Commons Attribution 2.5 License
   <meta name="generator" content="Joomla! 1.5 - Open Source Content Management" />
 <title>Welcome to the Frontpage</title>
 
-  <link href="<s:url value='/styles/main.css'/>" rel="stylesheet" type="text/css" media="all" />
+  <link href="/joomla/index.php?format=feed&amp;type=rss" rel="alternate" type="application/rss+xml" title="RSS 2.0" />
+  <link href="/joomla/index.php?format=feed&amp;type=atom" rel="alternate" type="application/atom+xml" title="Atom 1.0" />
+  <link rel="stylesheet" href="http://localhost/joomla/plugins/content/slimbox/slimbox.css" type="text/css" />
+  <script type="text/javascript" src="/joomla/media/system/js/mootools.js"></script>
+  <script type="text/javascript" src="/joomla/media/system/js/caption.js"></script>
+  <script type="text/javascript" src="http://localhost/joomla/plugins/content/slimbox/slimbox.js"></script>
+
+<link rel="stylesheet" href="/joomla/templates/mybusiness/css/template_css.css" type="text/css" />
 
 <style type="text/css">
 <!--
@@ -22,7 +29,6 @@ input.submit {  background-color: #CCCCCC;
   border: 1px solid #666;
   padding: 0;
 }
-.scrittabianca{ color:#CCCCCC}
 -->
 </style>
 </head>
@@ -44,7 +50,7 @@ input.submit {  background-color: #CCCCCC;
               <td><form action="#" method="post" name="form" id="form">
                   <table border="0" cellpadding="5" cellspacing="0" style="font-size:12px">
                     <tr>
-                      <td colspan="2"> <SPAN class="scrittabianca"> ERROR!! REINSERISCI USERNAME E PASSWORD</SPAN> </td>
+                      <td colspan="2">&nbsp;</td>
                     </tr>
                     <tr>
                       <td  class="" >Username</td>
