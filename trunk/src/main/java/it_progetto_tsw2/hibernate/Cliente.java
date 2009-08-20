@@ -5,6 +5,8 @@ import com.opensymphony.xwork2.validator.annotations.*;
 
 public class Cliente extends Utente
 {
+	private String nome_cliente;
+	private String cognome_cliente;
 	private String cartaCredito_cliente;
 	private String tipologia_cliente;
 	private Date validita_cliente;
@@ -41,6 +43,22 @@ public class Cliente extends Utente
 
 	public void setPrenotazioni(Set<Prenotazione> prenotazioni) {
 		this.prenotazioni = prenotazioni;
-	};
+	}
+
+	public String getNome_cliente() {
+		return nome_cliente;
+	}
+
+	public void setNome_cliente(String nomeCliente) {
+		nome_cliente = nomeCliente;
+	}
+
+	public String getCognome_cliente() {
+		return cognome_cliente;
+	}
+
+	public void setCognome_cliente(String cognomeCliente) {
+		cognome_cliente = cognomeCliente;
+	}
 	
 }

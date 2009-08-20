@@ -57,13 +57,13 @@ public class LogonAction extends BaseAction implements ServletRequestAware
 		System.out.println(password);
 		service=new UtenteServiceImpl();
 		Utente ut=service.login(login, password);
-		System.out.println("Utente trovato :"+ut.getNome_utente());
+
 		if(ut!=null){
 			request.getSession(true).setAttribute("messaggio",
 			null);
 			request.getSession(true).setAttribute(SecurityInterceptor.USER_OBJECT,
 					ut);
-			System.out.println("Utente che entra "+ut.getCognome_utente());
+		
 			return SUCCESS;
 		}
 		else{
