@@ -14,8 +14,8 @@
 	<s:form name="ricerca_form" action="searchStaffByExample">
 	
 		<s:textfield  name="CF_utente" label="Codice Fiscale"/>	
-		<s:textfield  name="nome_utente" label="Nome"/>
-		<s:textfield  name="cognome_utente" label="Cognome"/>
+		<s:textfield  name="nome_staff" label="Nome"/>
+		<s:textfield  name="cognome_staff" label="Cognome"/>
 		<s:textfield  name="login_utente" label="Login"/>
 		<s:textfield  name="password_utente" label="Password"/>
 		<s:textfield  name="indirizzo_utente.via" label="Via"/>
@@ -44,8 +44,8 @@
 			</td>
 			
 			<td> <s:property value="cf_utente"/>  </td> 
-			<td> <s:property value="nome_utente"/>  </td>
-			<td> <s:property value="cognome_utente"/> </td>
+			<td> <s:property value="nome_staff"/>  </td>
+			<td> <s:property value="cognome_staff"/> </td>
 			<td> <s:property value="competenza_staff"/> </td>
 			
 			<td>
