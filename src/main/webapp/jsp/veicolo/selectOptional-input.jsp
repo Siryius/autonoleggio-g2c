@@ -12,7 +12,7 @@
 <s:form action="selectCategoria" namespace="/veicolo" method="post" >
 
     <s:select size="10" name="selectedOptional"
-            list="optionals" listKey="id_optional" listValue="name" />
+            list="optionals" listKey="id_optional" listValue="nome_optional" />
     <s:submit key="button.select" />
 
 </s:form>

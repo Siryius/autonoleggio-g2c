@@ -12,7 +12,7 @@
 <s:form action="selectSede" namespace="/veicolo" method="post" >
 
     <s:select size="10" name="selectedSede"
-            list="sedi" listKey="id_sede" listValue="name" />
+            list="sedi" listKey="id_sede" listValue="nome_sede" />
     <s:submit key="button.select" />
 
 </s:form>
