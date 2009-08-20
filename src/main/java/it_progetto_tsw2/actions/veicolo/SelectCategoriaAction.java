@@ -61,6 +61,7 @@ public class SelectCategoriaAction extends BaseVeicoloAction implements Preparab
 
     public String execute() throws Exception {
     	Veicolo veicolo=super.getVeicolo();
+    	
         veicolo.setCategoria(serviceCategoria.findById(selectedCategoria));
         return SUCCESS;
     }

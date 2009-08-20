@@ -14,15 +14,18 @@ import com.opensymphony.xwork2.validator.annotations.*;
 @Validation
 public class EnterVeicoloDetailsAction extends BaseVeicoloAction implements Preparable
 {
+	private Veicolo veicolo;
+	
 	public void prepare()
 	{
-		Veicolo veicolo=super.getVeicolo();
+		veicolo=super.getVeicolo();
 		veicolo=new Veicolo();
 	}
 	
 	@VisitorFieldValidator(message="", fieldName="model", shortCircuit=false, appendPrefix=false )
 	public String execute()throws Exception
 	{
+		super.setModel(veicolo);
 		return SUCCESS;
 	}
 

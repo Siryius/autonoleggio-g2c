@@ -11,6 +11,7 @@ import com.opensymphony.xwork2.Preparable;
 import it_progetto_tsw2.services.CategoriaService;
 import it_progetto_tsw2.services.CategoriaServiceImpl;
 import it_progetto_tsw2_hibernate.*;
+import java.util.*;
 
 @ParentPackage("enterVeicolo")
 @Results( value={
@@ -18,13 +19,16 @@ import it_progetto_tsw2_hibernate.*;
 })    
 public class EnterCategoriaDetailsAction extends BaseVeicoloAction implements Preparable
 {
+	private List<Categoria> categorie;
 	private Categoria categoria;
 	private CategoriaService serviceCategoria;
+	Long selectedCategoria;
 	
 	public void prepare()
 	{
 		serviceCategoria=new CategoriaServiceImpl();
 		categoria=new Categoria();
+		categorie=(List<Categoria>)serviceCategoria.findAllCategoria();
 	}
 
 	public Categoria getCategoria() {
@@ -45,8 +49,25 @@ public class EnterCategoriaDetailsAction extends BaseVeicoloAction implements Pr
 	
 	public String execute()
 	{
-        serviceCategoria.persist(categoria, categoria.getNome_categoria());
+		Veicolo veicolo=super.getVeicolo();
+        veicolo.setCategoria(serviceCategoria.findById(selectedCategoria));
         return SUCCESS;
+	}
+
+	public List<Categoria> getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(List<Categoria> categorie) {
+		this.categorie = categorie;
+	}
+
+	public Long getSelectedCategoria() {
+		return selectedCategoria;
+	}
+
+	public void setSelectedCategoria(Long selectedCategoria) {
+		this.selectedCategoria = selectedCategoria;
 	}
 
 }
