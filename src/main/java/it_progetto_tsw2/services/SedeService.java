@@ -15,4 +15,6 @@ public interface SedeService
 	public boolean deleteSede(Sede sede, String nome_sede);
 	public boolean updateSede(Sede sede);
 	
+	public Sede findById(Long id_sede);
+	
 }

@@ -170,5 +170,25 @@ public class CategoriaServiceImpl implements CategoriaService
 		
 		return ris;
 	}
+	
+	public Categoria findById(Long id_categoria)
+	{
+		Categoria categoria=null;
+		
+		try
+		{
+			session = util.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			categoria=(Categoria)session.get(Categoria.class, id_categoria);
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Errore CategoriaServiceImpl findById");
+			e.printStackTrace();
+		}
+		
+		return categoria;
+	}
 
 }

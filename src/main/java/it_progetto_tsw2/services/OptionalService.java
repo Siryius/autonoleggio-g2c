@@ -14,4 +14,6 @@ public interface OptionalService
 	public boolean deleteOptional(Optional optional, String nome_optional);
 	public boolean updateOptional(Optional optional);
 	
+	public Optional findById(Long id_sede);
+	
 }

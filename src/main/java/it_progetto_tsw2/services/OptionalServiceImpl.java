@@ -217,6 +217,26 @@ public class OptionalServiceImpl implements OptionalService
 		return ris;
 	}
 	
+	public Optional findById(Long id_optional)
+	{
+		Optional optional=null;
+		
+		try
+		{
+			session = util.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			optional=(Optional)session.get(Optional.class, id_optional);
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Errore OptionalServiceImpl findById");
+			e.printStackTrace();
+		}
+		
+		return optional;
+	}
+	
 
 
 
