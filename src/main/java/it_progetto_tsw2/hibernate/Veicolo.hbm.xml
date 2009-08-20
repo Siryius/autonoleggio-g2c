@@ -12,7 +12,7 @@
 		<property name="nome_veicolo" type="string" column="NOME_VEICOLO" unique="true" not-null="true"/>
 		<property name="tipo_veicolo" type="string" column="TIPO_VEICOLO"/>
 		<property name="descrizione_veicolo" type="string" column="DESCRIZIONE_VEICOLO"/>
-		<property name="nPosti_veicolo" type="integer" column="NPOSTI_VEICOLO"/>
+		<property name="nposti_veicolo" type="integer" column="NPOSTI_VEICOLO"/>
 		<property name="cilindrata_veicolo" type="integer" column="CILINDRATA_VEICOLO"/>
 		<property name="disponibile_veicolo" type="true_false" column="DISPONIBILE_VEICOLO"/>
 		<property name="immatricolazione_veicolo" type="date" column="IMMATRICOLAZIONE_VEICOLO"/>
@@ -25,8 +25,8 @@
 		
 		<!-- mappiamo ora le associazioni -->
 		
-		<many-to-one name="categoria" column="FKID_CATEGORIA" class="it_progetto_tsw2_hibernate.Categoria" not-null="true"/>
-		<many-to-one name="sede" column="FKID_SEDE" class="it_progetto_tsw2_hibernate.Sede" not-null="true"/>
+		<many-to-one name="categoria" column="FKID_CATEGORIA" class="it_progetto_tsw2_hibernate.Categoria" not-null="false"/>
+		<many-to-one name="sede" column="FKID_SEDE" class="it_progetto_tsw2_hibernate.Sede" not-null="false"/>
 		
 		<set name="prenotazioni" inverse="true">
         	<key column="ID_VEICOLO"/>
