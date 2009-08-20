@@ -16,7 +16,7 @@
 		<!-- mappiamo ora le associazioni -->
 		
 		<set name="veicoli" inverse="true">
-        	<key column="ID_CATEGORIA"/>
+        	<key column="ID_VEICOLO"/>
         	<one-to-many class="it_progetto_tsw2_hibernate.Veicolo"/>
         </set>
 		

@@ -2,13 +2,15 @@ package it_progetto_tsw2_hibernate;
 
 import java.util.*;
 
+import com.opensymphony.xwork2.validator.annotations.RequiredStringValidator;
+
 public class Veicolo 
 {
 	private Long id_veicolo;
 	private String nome_veicolo;
 	private String descrizione_veicolo;
 	private String tipo_veicolo;
-	private int nPosti_veicolo;
+	private int nposti_veicolo;
 	private int cilindrata_veicolo;
 	private boolean disponibile_veicolo;
 	private Date immatricolazione_veicolo;
@@ -34,6 +36,8 @@ public class Veicolo
 	public String getNome_veicolo() {
 		return nome_veicolo;
 	}
+	
+	@RequiredStringValidator(message = "Campo nome obbligatorio", trim = true)
 	public void setNome_veicolo(String nome_veicolo) {
 		this.nome_veicolo = nome_veicolo;
 	}
@@ -49,11 +53,11 @@ public class Veicolo
 	public void setTipo_veicolo(String tipo_veicolo) {
 		this.tipo_veicolo = tipo_veicolo;
 	}
-	public int getnPosti_veicolo() {
-		return nPosti_veicolo;
+	public int getNposti_veicolo() {
+		return nposti_veicolo;
 	}
-	public void setnPosti_veicolo(int posti_veicolo) {
-		nPosti_veicolo = posti_veicolo;
+	public void setNposti_veicolo(int posti_veicolo) {
+		nposti_veicolo = posti_veicolo;
 	}
 	public int getCilindrata_veicolo() {
 		return cilindrata_veicolo;
@@ -132,6 +136,11 @@ public class Veicolo
 	}
 	public void setOptionals(Set<Optional> optionals) {
 		this.optionals = optionals;
-	} 
+	}
+	
+	public void addOptional(Optional optional)
+	{
+		optionals.add(optional);
+	}
 
 }

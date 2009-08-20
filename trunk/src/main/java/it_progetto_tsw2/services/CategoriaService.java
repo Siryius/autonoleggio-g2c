@@ -14,4 +14,6 @@ public interface CategoriaService
 	public boolean persist(Categoria categoria, String nome_categoria);
 	public boolean deleteCategoria(Categoria categoria, String nome_categoria);
 	public boolean updateCategoria(Categoria categoria);
+	
+	public Categoria findById(Long id_categoria);
 }
