@@ -191,8 +191,6 @@ public class UtenteServiceImpl implements UtenteService
 			if(tmp_utente!=null)
 			{
 				tmp_utente.setCF_utente(utente.getCF_utente());
-				tmp_utente.setNome_utente(utente.getNome_utente());
-				tmp_utente.setCognome_utente(utente.getCognome_utente());
 				tmp_utente.setLogin_utente(utente.getLogin_utente());
 				tmp_utente.setPassword_utente(utente.getPassword_utente());
 				tmp_utente.setIndirizzo_utente(utente.getIndirizzo_utente());

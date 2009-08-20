@@ -1,7 +1,8 @@
 package it_progetto_tsw2.services;
 
 import it_progetto_tsw2.util.HibernateUtil;
-import it_progetto_tsw2_hibernate.Cliente;
+import it_progetto_tsw2_hibernate.Azienda;
+import it_progetto_tsw2_hibernate.Optional;
 
 import java.util.List;
 
@@ -11,42 +12,41 @@ import org.hibernate.criterion.Example;
 import org.hibernate.criterion.MatchMode;
 import org.hibernate.criterion.Restrictions;
 
-
-public class ClienteServiceImpl implements ClienteService
+public class AziendaServiceImpl implements AziendaService
 {
 	private Session session;
 	private Criteria criteria;
 	private HibernateUtil util;
 	
-	public ClienteServiceImpl()
+	public AziendaServiceImpl()
 	{
 		util=new HibernateUtil();
 	}
 	
 
 	
-	public Cliente findByCF_cliente(String CF_cliente)
+	public Azienda findByCF_azienda(String CF_azienda)
 	{
-		Cliente cliente=null;
+		Azienda azienda=null;
 		try
 		{
 					
 			session = util.getSessionFactory().getCurrentSession();	
 			session.beginTransaction();
 			
-			criteria= session.createCriteria(Cliente.class);
-			criteria.add(Restrictions.eq("CF_utente",CF_cliente));
-			cliente=(Cliente)criteria.uniqueResult();
+			criteria= session.createCriteria(Azienda.class);
+			criteria.add(Restrictions.eq("CF_utente",CF_azienda));
+			azienda=(Azienda)criteria.uniqueResult();
 			System.out.println("Ok query \n");
 			
 			session.getTransaction().commit();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore ClienteServiceImpl findByCF_cliente");
+			System.out.println("Errore AziendaServiceImpl findByCF_azienda");
 			e.printStackTrace();
 		}
-		return cliente;
+		return azienda;
 	}
 	
 	/*public List findByCriteria(ArrayList criterias)
@@ -89,27 +89,27 @@ public class ClienteServiceImpl implements ClienteService
 		return list;	
 	}*/
 	
-	public List findByExample(Cliente cliente)
+	public List findByExample(Azienda azienda)
 	{
 		List list=null;
 		try
 		{
 			session = util.getSessionFactory().getCurrentSession();	
 			session.beginTransaction();
-			Criteria criteria = session.createCriteria(Cliente.class);
-			criteria.add( Example.create(cliente).excludeZeroes().ignoreCase().enableLike(MatchMode.ANYWHERE) );
+			Criteria criteria = session.createCriteria(Azienda.class);
+			criteria.add( Example.create(azienda).excludeZeroes().ignoreCase().enableLike(MatchMode.ANYWHERE) );
 			list = criteria.list();
 			session.getTransaction().commit();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore ClienteServiceImpl findByExample");
+			System.out.println("Errore AziendaServiceImpl findByExample");
 			e.printStackTrace();
 		}
 		return list;
 	}
 
-	public List findAllCliente()
+	public List findAllAzienda()
 	{
 		List cri=null;
 	
@@ -117,30 +117,30 @@ public class ClienteServiceImpl implements ClienteService
 		{
 			session = util.getSessionFactory().getCurrentSession();
 			session.beginTransaction(); 
-			Criteria criteria = session.createCriteria(Cliente.class);
+			Criteria criteria = session.createCriteria(Azienda.class);
 			cri = criteria.list();
 			session.getTransaction().commit();
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore ClienteServiceImpl findAllCliente");
+			System.out.println("Errore AziendaServiceImpl findAllAzienda");
 			e.printStackTrace();
 		}
 		return cri;
 	}
 	
-	public boolean persist(Cliente cliente,String CF_cliente)
+	public boolean persist(Azienda azienda,String CF_azienda)
 	{
 		boolean ris=true;
 		try
 		{
-			Cliente tmp_cliente=null;
-			tmp_cliente=findByCF_cliente(CF_cliente);
-			if(tmp_cliente==null)
+			Azienda tmp_azienda=null;
+			tmp_azienda=findByCF_azienda(CF_azienda);
+			if(tmp_azienda==null)
 			{	
 				session = util.getSessionFactory().getCurrentSession();
 				session.beginTransaction();
-				session.persist(CF_cliente,cliente);
+				session.persist(CF_azienda,azienda);
 				session.getTransaction().commit();
 			}
 			else
@@ -148,24 +148,24 @@ public class ClienteServiceImpl implements ClienteService
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore ClienteServiceImpl persist");
+			System.out.println("Errore AziendaServiceImpl persist");
 			e.printStackTrace();
 		}
 		return ris;
 	}
 	
-	public boolean deleteCliente(Cliente cliente,String CF_cliente)
+	public boolean deleteAzienda(Azienda azienda,String CF_azienda)
 	{
 		boolean ris=true;
 		try
 		{
 
-			Cliente tmp_cliente=this.findByCF_cliente(CF_cliente);
-			if(tmp_cliente!=null)
+			Azienda tmp_staff=this.findByCF_azienda(CF_azienda);
+			if(tmp_staff!=null)
 			{
 				session = util.getSessionFactory().getCurrentSession();
 				session.beginTransaction();
-				session.delete(tmp_cliente);
+				session.delete(tmp_staff);
 				session.getTransaction().commit();
 			}
 			else
@@ -173,35 +173,33 @@ public class ClienteServiceImpl implements ClienteService
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore ClienteServiceImpl deleteCliente");
+			System.out.println("Errore AziendaServiceImpl deleteAzienda");
 			e.printStackTrace();
 		}
 	
 		return ris;
 	}
 	
-	public boolean updateCliente(Cliente cliente)
+	public boolean updateAzienda(Azienda azienda)
 	{
 		boolean ris=true;
 		try
 		{
-			Cliente tmp_cliente=null;
+			Azienda tmp_azienda=null;
 			session = util.getSessionFactory().getCurrentSession();
 			session.beginTransaction();
-			tmp_cliente=(Cliente)session.get(Cliente.class, cliente.getId_utente());
-			if(tmp_cliente!=null)
+			tmp_azienda=(Azienda)session.get(Azienda.class, azienda.getId_utente());
+			if(tmp_azienda!=null)
 			{
-				tmp_cliente.setCF_utente(cliente.getCF_utente());
-				tmp_cliente.setNome_cliente(cliente.getNome_cliente());
-				tmp_cliente.setCognome_cliente(cliente.getCognome_cliente());
-				tmp_cliente.setLogin_utente(cliente.getLogin_utente());
-				tmp_cliente.setPassword_utente(cliente.getPassword_utente());
-				tmp_cliente.setIndirizzo_utente(cliente.getIndirizzo_utente());
-				tmp_cliente.setCartaCredito_cliente(cliente.getCartaCredito_cliente());
-				tmp_cliente.setTipologia_cliente(cliente.getTipologia_cliente());
-				tmp_cliente.setValidita_cliente(cliente.getValidita_cliente());
+				tmp_azienda.setCF_utente(azienda.getCF_utente());
+				tmp_azienda.setLogin_utente(azienda.getLogin_utente());
+				tmp_azienda.setPassword_utente(azienda.getPassword_utente());
+				tmp_azienda.setIndirizzo_utente(azienda.getIndirizzo_utente());
+				tmp_azienda.setPartitaiva_azienda(azienda.getPartitaiva_azienda());
+				tmp_azienda.setRagionesociale_azienda(azienda.getRagionesociale_azienda());
+				tmp_azienda.setIndirizzo_operativo(azienda.getIndirizzo_operativo());
 				
-				session.saveOrUpdate(tmp_cliente);
+				session.saveOrUpdate(tmp_azienda);
 			}
 			else
 				ris=false;
@@ -210,15 +208,38 @@ public class ClienteServiceImpl implements ClienteService
 		}
 		catch(Exception e)
 		{
-			System.out.println("Errore OptionalServiceImpl updateOptional");
+			System.out.println("Errore AziendaServiceImpl updateAzienda");
 			e.printStackTrace();
 		}
 		
 		return ris;
 	}
 	
+	public Azienda findById(Long id_azienda)
+	{
+		Azienda azienda=null;
+		
+		try
+		{
+			session = util.getSessionFactory().getCurrentSession();
+			session.beginTransaction();
+			azienda=(Azienda)session.get(Azienda.class, id_azienda);
+			session.getTransaction().commit();
+		}
+		catch(Exception e)
+		{
+			System.out.println("Errore AziendaServiceImpl findById");
+			e.printStackTrace();
+		}
+		
+		return azienda;
+	}
+	
+	
 
 
 
 }
+
+
 

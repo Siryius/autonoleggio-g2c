@@ -192,12 +192,12 @@ public class StaffServiceImpl implements StaffService
 			if(tmp_staff!=null)
 			{
 				tmp_staff.setCF_utente(staff.getCF_utente());
-				tmp_staff.setNome_utente(staff.getNome_utente());
-				tmp_staff.setCognome_utente(staff.getCognome_utente());
 				tmp_staff.setLogin_utente(staff.getLogin_utente());
 				tmp_staff.setPassword_utente(staff.getPassword_utente());
 				tmp_staff.setIndirizzo_utente(staff.getIndirizzo_utente());
 				tmp_staff.setCompetenza_staff(staff.getCompetenza_staff());
+				tmp_staff.setCognome_staff(staff.getCognome_staff());
+				tmp_staff.setNome_staff(staff.getNome_staff());
 				
 				session.saveOrUpdate(tmp_staff);
 			}
