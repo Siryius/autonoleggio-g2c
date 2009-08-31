@@ -31,16 +31,16 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
 
-        <mapping resource="it_progetto_tsw2_hibernate/Assicurazione.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Categoria.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Noleggio.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Optional.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Pratica.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Prenotazione.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Promozione.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Sede.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Utente.hbm.xml"/>
-        <mapping resource="it_progetto_tsw2_hibernate/Veicolo.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Assicurazione.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Categoria.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Noleggio.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Optional.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Pratica.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Prenotazione.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Promozione.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Sede.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Utente.hbm.xml"/>
+        <mapping resource="it_progetto_tsw2/domain/Veicolo.hbm.xml"/>
         
     </session-factory>
 
