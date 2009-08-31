@@ -1,9 +1,9 @@
 package it_progetto_tsw2.actions.anagrafica;
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.Veicolo;
 import it_progetto_tsw2.services.VeicoloService;
 import it_progetto_tsw2.services.VeicoloServiceImpl;
-import it_progetto_tsw2_hibernate.Veicolo;
 
 import java.util.Iterator;
 

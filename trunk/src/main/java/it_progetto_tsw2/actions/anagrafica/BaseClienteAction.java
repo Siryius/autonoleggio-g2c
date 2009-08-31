@@ -1,9 +1,9 @@
 package it_progetto_tsw2.actions.anagrafica;
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.Cliente;
 import it_progetto_tsw2.services.ClienteService;
 import it_progetto_tsw2.services.ClienteServiceImpl;
-import it_progetto_tsw2_hibernate.Cliente;
 
 import java.util.Iterator;
 
