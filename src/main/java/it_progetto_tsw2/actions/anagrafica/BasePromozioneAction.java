@@ -1,9 +1,9 @@
 package it_progetto_tsw2.actions.anagrafica;
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.Promozione;
 import it_progetto_tsw2.services.PromozioneService;
 import it_progetto_tsw2.services.PromozioneServiceImpl;
-import it_progetto_tsw2_hibernate.Promozione;
 
 import java.util.Iterator;
 

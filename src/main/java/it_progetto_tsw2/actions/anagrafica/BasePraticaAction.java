@@ -1,9 +1,9 @@
 package it_progetto_tsw2.actions.anagrafica;
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.Pratica;
 import it_progetto_tsw2.services.PraticaService;
 import it_progetto_tsw2.services.PraticaServiceImpl;
-import it_progetto_tsw2_hibernate.Pratica;
 
 import java.util.Iterator;
 

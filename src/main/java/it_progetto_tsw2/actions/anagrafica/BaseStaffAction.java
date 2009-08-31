@@ -1,9 +1,9 @@
 package it_progetto_tsw2.actions.anagrafica;
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.Staff;
 import it_progetto_tsw2.services.StaffService;
 import it_progetto_tsw2.services.StaffServiceImpl;
-import it_progetto_tsw2_hibernate.Staff;
 
 import java.util.Iterator;
 

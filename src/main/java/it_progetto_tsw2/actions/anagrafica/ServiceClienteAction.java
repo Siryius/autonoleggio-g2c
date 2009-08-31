@@ -3,8 +3,8 @@ package it_progetto_tsw2.actions.anagrafica;
 import com.opensymphony.xwork2.validator.annotations.*;
 
 
+import it_progetto_tsw2.domain.Cliente;
 import it_progetto_tsw2.services.ClienteService;
-import it_progetto_tsw2_hibernate.Cliente;
 
 import java.util.Iterator;
 import java.util.List;

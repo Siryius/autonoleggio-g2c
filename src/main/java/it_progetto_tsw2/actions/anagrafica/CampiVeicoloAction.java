@@ -5,8 +5,8 @@ import java.util.List;
 import com.opensymphony.xwork2.validator.annotations.Validations;
 import com.opensymphony.xwork2.validator.annotations.VisitorFieldValidator;
 
+import it_progetto_tsw2.domain.Optional;
 import it_progetto_tsw2.services.*;
-import it_progetto_tsw2_hibernate.Optional;
 import java.util.*;
 
 public class CampiVeicoloAction extends BaseVeicoloAction

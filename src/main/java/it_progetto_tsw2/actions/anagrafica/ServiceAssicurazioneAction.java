@@ -1,7 +1,7 @@
 package it_progetto_tsw2.actions.anagrafica;
 
+import it_progetto_tsw2.domain.Assicurazione;
 import it_progetto_tsw2.services.AssicurazioneService;
-import it_progetto_tsw2_hibernate.Assicurazione;
 
 import java.util.Iterator;
 import java.util.List;

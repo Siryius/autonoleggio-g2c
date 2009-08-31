@@ -1,10 +1,10 @@
 package it_progetto_tsw2.actions.anagrafica;
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.Categoria;
+import it_progetto_tsw2.domain.Optional;
 import it_progetto_tsw2.services.CategoriaService;
 import it_progetto_tsw2.services.CategoriaServiceImpl;
-import it_progetto_tsw2_hibernate.Categoria;
-import it_progetto_tsw2_hibernate.Optional;
 
 import java.util.Iterator;
 

@@ -1,7 +1,7 @@
 package it_progetto_tsw2.actions.anagrafica;
 
+import it_progetto_tsw2.domain.Categoria;
 import it_progetto_tsw2.services.CategoriaService;
-import it_progetto_tsw2_hibernate.Categoria;
 
 import java.util.Iterator;
 import java.util.List;

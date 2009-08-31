@@ -1,9 +1,9 @@
 package it_progetto_tsw2.actions.anagrafica;
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.Sede;
 import it_progetto_tsw2.services.SedeService;
 import it_progetto_tsw2.services.SedeServiceImpl;
-import it_progetto_tsw2_hibernate.Sede;
 
 import java.util.Iterator;
 

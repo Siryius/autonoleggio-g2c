@@ -2,6 +2,7 @@ package it_progetto_tsw2.actions.anagrafica;
 
 
 import it_progetto_tsw2.actions.BaseAction;
+import it_progetto_tsw2.domain.*;
 
 import org.hibernate.Session;
 
@@ -10,14 +11,13 @@ import com.opensymphony.xwork2.Preparable;
 
 import it_progetto_tsw2.services.*;
 import it_progetto_tsw2.util.HibernateUtil;
-import it_progetto_tsw2_hibernate.*;
 
 import java.util.*;
 import org.apache.struts2.config.ParentPackage;
 import com.opensymphony.xwork2.validator.annotations.*;
 
 @ParentPackage("base-package")
-//@Validation
+@Validation()
 public class BaseOptionalAction extends BaseAction implements ModelDriven<Optional> , Preparable
 {
 	protected Optional optional;
@@ -29,6 +29,7 @@ public class BaseOptionalAction extends BaseAction implements ModelDriven<Option
 	{
 		return optional;
 	}
+	
 	
 	public Optional getOptional() {
 		return optional;
@@ -57,6 +58,7 @@ public class BaseOptionalAction extends BaseAction implements ModelDriven<Option
 		this.allOptionIterator = allOptionIterator;
 	}
 	
+
 	public void prepare() throws Exception 
 	{	
 		try
