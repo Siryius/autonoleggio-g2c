@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it.unisa.tsw2.domain.Noleggio" table="NOLEGGIO">
+	
+		<id name="idNoleggio" column="ID_NOLEGGIO">
+			<generator class="native"/>
+		</id>
+		<property name="costo" type="string" column="COSTO_NOLEGGIO"/>
+			
+		<!-- mappiamo ora le associazioni -->
+		
+		<one-to-one name="prenotazione" class="it.unisa.tsw2.domain.Prenotazione" cascade="save-update" />
+        	
+		
+	</class>
+</hibernate-mapping>

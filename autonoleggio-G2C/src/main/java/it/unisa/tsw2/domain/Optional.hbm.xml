@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it.unisa.tsw2.domain.Optional" table="OPTIONAL">
+	
+		<id name="idOptional" column="ID_OPTIONAL">
+			<generator class="native"/>
+		</id>
+		<property name="nome" type="string" column="NOME_OPTIONAL" unique="true" not-null="true" />
+		<property name="descrizione" type="string" column="DESCRIZIONE_OPTIONAL"/>
+		<property name="supplemento" type="float" column="SUPPLEMENTO_OPTIONAL"/>
+		
+		<!-- mappiamo ora le associazioni -->
+
+        <set name="veicoli" table="OPTIONAL_VEICOLO" lazy="true" cascade="save-update">
+        	<key column="FKID_OPTIONAL"/>
+        	<many-to-many class="it.unisa.tsw2.domain.Veicolo" column="FKID_VEICOLO"/>
+        </set>
+        		
+	</class>
+</hibernate-mapping>

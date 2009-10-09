@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it.unisa.tsw2.domain.Categoria" table="CATEGORIA">
+	
+		<id name="idCategoria" column="ID_CATEGORIA">
+			<generator class="native"/>
+		</id>
+		<property name="nome" type="string" column="NOME_CATEGORIA" unique="true" not-null="true"/>
+		<property name="descrizione" type="string" column="DESCRIZIONE_CATEGORIA"/>
+		<property name="tariffa" type="integer" column="COSTO_CATEGORIA"/>
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<set name="veicoli" table="VEICOLO" lazy="true" inverse="true" cascade="save-update">
+        	<key column="FKID_CATEGORIA"/>
+        	<one-to-many class="it.unisa.tsw2.domain.Veicolo"/>
+        </set>
+		
+	</class>
+</hibernate-mapping>

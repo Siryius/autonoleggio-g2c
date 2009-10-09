@@ -1,0 +1,19 @@
+package it.unisa.tsw2.services;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import it.unisa.tsw2.domain.*;
+
+public interface CategoriaService 
+{
+	public Categoria findByNome_categoria(String nome_categoria);
+	public List findAllCategoria();
+	public List findByExample(Categoria categoria);
+	
+	public boolean persist(Categoria categoria, String nome_categoria);
+	public boolean deleteCategoria(Categoria categoria, String nome_categoria);
+	public boolean updateCategoria(Categoria categoria);
+	
+	public Categoria findById(Long id_categoria);
+}

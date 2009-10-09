@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it.unisa.tsw2.domain.Prenotazione" table="PRENOTAZIONE">
+	
+		<id name="idPrenotazione" column="ID_PRENOTAZIONE">
+			<generator class="native"/>
+		</id>
+		<property name="partenza" type="timestamp" column="PARTENZA_PRENOTAZIONE" not-null="true"/>
+		<property name="arrivo" type="timestamp" column="ARRIVO_PRENOTAZIONE"/>
+			
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<one-to-one name="noleggio" class="it.unisa.tsw2.domain.Noleggio" cascade="save-update" />
+		<many-to-one name="veicolo" column="FKID_VEICOLO" class="it.unisa.tsw2.domain.Veicolo" not-null="false" cascade="save-update"/>
+		<many-to-one name="cliente" column="FKID_CLIENTE" class="it.unisa.tsw2.domain.Cliente" not-null="false" cascade="save-update"/>
+        
+        <set name="assicurazioni" table="ASSICURAZIONE_PRENOTAZIONE" lazy="true" cascade="save-update">
+        	<key column="FKID_PRENOTAZIONE"/>
+        	<many-to-many class="it.unisa.tsw2.domain.Assicurazione" column="FKID_ASSICURAZIONE"/>	
+        </set>
+        
+        <set name="sedi" table="SEDE_PRENOTAZIONE" lazy="true"  cascade="save-update">
+        	<key column="FKID_PRENOTAZIONE"/>
+        	<many-to-many class="it.unisa.tsw2.domain.Prenotazione" column="FKID_SEDE"/>
+        </set>
+        	
+	</class>
+</hibernate-mapping>

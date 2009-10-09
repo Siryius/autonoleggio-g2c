@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- Individual action, zero configuration  -->
+    <constant name="struts.codebehind.defaultPackage" value="base-package" />
+    <constant name="struts.codebehind.pathPrefix" value="/WEB-INF/jsp/"/>
+   
+    <package name="home-package" extends="struts-default" namespace="/">
+    
+   	<!--   <global-results>
+     	<result name="unknownError">/WEB-INF/jsp/error.jsp</result>
+     </global-results>
+     <global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="unknownError" />
+            <exception-mapping exception="org.hibernate.exception.ConstraintViolationException" result="dupPK"></exception-mapping>
+      	</global-exception-mappings> -->
+    
+    <interceptors>
+		<interceptor name="security" class="it.unisa.tsw2.util.SecurityInterceptor">
+			<param name="requiresAuthentication">/anagrafica,/admin</param>
+		</interceptor>
+		
+        <interceptor-stack name="securedBasicStack">
+			<interceptor-ref name="security" />
+            <interceptor-ref name="paramsPrepareParamsStack" />				
+ 			<interceptor-ref name="debugging"/>
+ 		</interceptor-stack>
+	</interceptors>
+        
+   	<default-interceptor-ref name="securedBasicStack" />
+    
+    	<!-- Index  -->
+        
+        <action name="index" class="it.unisa.tsw2.actions.IndexAction">
+        	<result name="success" >/WEB-INF/jsp/logon.jsp</result>
+        </action>
+        
+        <!-- END Index -->
+	
+		<!-- Login  -->
+		
+		<action name="logon" class="it.unisa.tsw2.actions.LogonAction">
+			<result name="amministratore" type="redirectAction">allPratica</result>
+			<result name="staff" type="redirectAction">allPratica</result>
+			<result name="cliente" type="redirectAction">allPromozione</result>
+			<result name="failed" >index.jsp</result>
+		</action>
+		
+		<action name="logoff" class="it.unisa.tsw2.actions.LogoffAction">
+			<result name="success" type="redirectAction">index.jsp</result>
+		</action>
+		
+		<!-- END Login  -->	
+		
+		</package>
+    
+		<package name="enterVeicolo" namespace="/veicolo" extends="home-package">
+		
+			<interceptors>
+            	<interceptor name="flash" class="com.opensymphony.webwork.interceptor.FlashInterceptor" />
+            	<interceptor-stack name="veicoloStack">
+                <interceptor-ref name="scope">
+                    <param name="session">model</param>
+                    <param name="key">partialVeicolo</param>
+                </interceptor-ref>
+                <interceptor-ref name="paramsPrepareParamsStack"/> 
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="veicoloStack" />
+		
+		<action name="addVeicoloFlow" class="it.unisa.tsw2.actions.veicolo.BaseVeicoloAction" >
+			<interceptor-ref name="veicoloStack">
+				<param name="scope.type">start</param>
+			</interceptor-ref>
+			<result>/WEB-INF/jsp/veicolo/enterVeicoloDetails-input.jsp</result>
+		</action>
+		
+		<action name="completeVeicolo" class="it.unisa.tsw2.actions.veicolo.BaseVeicoloAction" >
+			<interceptor-ref name="veicoloStack">
+				<param name="scope.type">end</param>
+			</interceptor-ref>
+			<result>/WEB-INF/jsp/veicolo/veicoloReview.jsp</result>
+		</action>
+		</package>
+		
+		<package name="enterUtente" namespace="/utente" extends="base-package">
+		
+        <interceptors>
+            <interceptor name="flash" class="com.opensymphony.webwork.interceptor.FlashInterceptor" />
+            <interceptor-stack name="utenteStack">
+                <interceptor-ref name="scope">
+                    <param name="session">model</param>
+                    <param name="key">partialUtente</param>
+                </interceptor-ref>
+                <interceptor-ref name="paramsPrepareParamsStack"/>
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="utenteStack" />
+
+        <action name="addUtenteFlow" class="it.unisa.tsw2.actions.utente.BaseUtenteAction">
+            <interceptor-ref name="utenteStack">
+                <param name="scope.type">start</param>
+            </interceptor-ref>
+            <result>/WEB-INF/jsp/utente/contratto.jsp</result>
+        </action>
+
+        <action name="completeUtente" class="it.unisa.tsw2.actions.utente.BaseUtenteAction">
+            <interceptor-ref name="utenteStack">
+                <param name="scope.type">end</param>
+            </interceptor-ref>
+            <result>/WEB-INF/jsp/utente/utenteReview.jsp</result>
+        </action>
+
+         <action name="flashedSelectUtenteType" class="it.unisa.tsw2.actions.utente.SelectUtenteTypeAction">
+             <interceptor-ref name="flash">
+                 <param name="operation">Retrieve</param>
+             </interceptor-ref>
+             <interceptor-ref name="utenteStack" />
+            <result>/WEB-INF/jsp/utente/selectUtenteType-input.jsp</result>
+        </action>
+
+    </package>
+    
+    <package name="enterPrenotazione" namespace="/prenotazione" extends="home-package">
+		
+			<interceptors>
+            	<interceptor name="flash" class="com.opensymphony.webwork.interceptor.FlashInterceptor" />
+            	<interceptor-stack name="prenotazioneStack">
+                <interceptor-ref name="scope">
+                    <param name="session">model</param>
+                    <param name="key">partialPrenotazione</param>
+                </interceptor-ref>
+                <interceptor-ref name="paramsPrepareParamsStack"/> 
+            </interceptor-stack>
+        </interceptors>
+
+        <default-interceptor-ref name="prenotazioneStack" />
+		
+		<action name="addPrenotazioneFlow" class="it.unisa.tsw2.actions.prenotazione.BasePrenotazioneAction" >
+			<interceptor-ref name="prenotazioneStack">
+				<param name="scope.type">start</param>
+			</interceptor-ref>
+			<result>/WEB-INF/jsp/prenotazione/enterPrenotazioneDetails-input.jsp</result>
+		</action>
+		
+		<action name="completePrenotazione" class="it.unisa.tsw2.actions.prenotazione.BasePrenotazioneAction" >
+			<interceptor-ref name="prenotazioneStack">
+				<param name="scope.type">end</param>
+			</interceptor-ref>
+			<result>/WEB-INF/jsp/prenotazione/prenotazioneReview.jsp</result>
+		</action>
+		
+		</package>
+		
+		<package name="base-package" namespace="/" extends="struts-default">
+		
+		
+		
+		
+		<action name="allOptional" method="searchAllOptional" class="it.unisa.tsw2.actions.anagrafica.ServiceOptionalAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allOptional.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="searchOptionalByNome_optional" method="searchOptionalByNome_optional" class="it.unisa.tsw2.actions.anagrafica.ServiceOptionalAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchOptionalByNome_optional.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref> 
+		</action>
+		
+		<action name="searchOptionalByExample" method="searchOptionalByExample" class="it.unisa.tsw2.actions.anagrafica.ServiceOptionalAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allOptional.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="campiOptional" class="it.unisa.tsw2.actions.anagrafica.CampiOptionalAction">
+			<result >/WEB-INF/jsp/anagrafica/campiOptional.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack"/>
+		</action>
+		
+		<action name="newOptional" method="insertOptional" class="it.unisa.tsw2.actions.anagrafica.ServiceOptionalAction" >
+			<result name="success" type="redirectAction">allOptional</result>
+			<result name="input" >/WEB-INF/jsp/anagrafica/campiOptional.jsp</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
+      	</action>
+		
+		<action name="deleteOptional" method="deleteOptional" class="it.unisa.tsw2.actions.anagrafica.ServiceOptionalAction" >
+			<result name="success" type="redirectAction">allOptional</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
+		</action>
+		
+		<action name="updateOptional" method="updateOptional" class="it.unisa.tsw2.actions.anagrafica.ServiceOptionalAction" > 
+			<result name="success" type="redirectAction">allOptional</result>
+			<interceptor-ref name="paramsPrepareParamsStack">
+				<param name="validation.validateAnnotatedMethodOnly">true</param>
+			</interceptor-ref>
+		</action>
+		
+	
+		
+		<action name="allCategoria" method="searchAllCategoria" class="it.unisa.tsw2.actions.anagrafica.ServiceCategoriaAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allCategoria.jsp</result>
+		</action>
+		
+		<action name="searchCategoriaByNome_categoria" method="searchCategoriaByNome_categoria" class="it.unisa.tsw2.actions.anagrafica.ServiceCategoriaAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchCategoriaByNome_categoria.jsp</result>
+		</action>
+		
+		<action name="searchCategoriaByExample" method="searchCategoriaByExample" class="it.unisa.tsw2.actions.anagrafica.ServiceCategoriaAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allCategoria.jsp</result>
+		</action>
+		
+		<action name="campiCategoria" class="it.unisa.tsw2.actions.anagrafica.CampiCategoriaAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/campiCategoria.jsp</result>
+		</action>
+		
+		<action name="newCategoria" method="insertCategoria" class="it.unisa.tsw2.actions.anagrafica.ServiceCategoriaAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allCategoria</result>
+		</action>
+		
+		<action name="deleteCategoria" method="deleteCategoria" class="it.unisa.tsw2.actions.anagrafica.ServiceCategoriaAction" > 
+			<result name="success" type="redirectAction">allCategoria</result>
+		</action>
+		
+		<action name="updateCategoria" method="updateCategoria" class="it.unisa.tsw2.actions.anagrafica.ServiceCategoriaAction" > 
+			<result name="success" type="redirectAction">allCategoria</result>
+		</action>
+		
+		
+		
+		<action name="allSede" method="searchAllSede" class="it.unisa.tsw2.actions.anagrafica.ServiceSedeAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allSede.jsp</result>
+		</action>
+		
+		<action name="searchSedeByNome_sede" method="searchSedeByNome_sede" class="it.unisa.tsw2.actions.anagrafica.ServiceSedeAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchSedeByNome_sede.jsp</result>
+		</action>
+		
+		<action name="searchSedeByExample" method="searchSedeByExample" class="it.unisa.tsw2.actions.anagrafica.ServiceSedeAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allSede.jsp</result>
+		</action>
+		
+		<action name="campiSede" class="it.unisa.tsw2.actions.anagrafica.CampiSedeAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/campiSede.jsp</result>
+		</action>
+		
+		<action name="newSede" method="insertSede" class="it.unisa.tsw2.actions.anagrafica.ServiceSedeAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allSede</result>
+		</action>
+		
+		<action name="deleteSede" method="deleteSede" class="it.unisa.tsw2.actions.anagrafica.ServiceSedeAction" > 
+			<result name="success" type="redirectAction">allSede</result>
+		</action>
+		
+		<action name="updateSede" method="updateSede" class="it.unisa.tsw2.actions.anagrafica.ServiceSedeAction" > 
+			<result name="success" type="redirectAction">allSede</result>
+		</action>
+		
+	
+		
+		<action name="allPromozione" method="searchAllPromozione" class="it.unisa.tsw2.actions.anagrafica.ServicePromozioneAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allPromozione.jsp</result>
+		</action>
+		
+		<action name="searchPromozioneByNome_promozione" method="searchPromozioneByNome_promozione" class="it.unisa.tsw2.actions.anagrafica.ServicePromozioneAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchPromozioneByNome_promozione.jsp</result>
+		</action>
+		
+		<action name="searchPromozioneByExample" method="searchPromozioneByExample" class="it.unisa.tsw2.actions.anagrafica.ServicePromozioneAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allPromozione.jsp</result>
+		</action>
+		
+		<action name="campiPromozione" class="it.unisa.tsw2.actions.anagrafica.CampiPromozioneAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/campiPromozione.jsp</result>
+		</action>
+		
+		<action name="newPromozione" method="insertPromozione" class="it.unisa.tsw2.actions.anagrafica.ServicePromozioneAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allPromozione</result>
+		</action>
+		
+		<action name="deletePromozione" method="deletePromozione" class="it.unisa.tsw2.actions.anagrafica.ServicePromozioneAction" > 
+			<result name="success" type="redirectAction">allPromozione</result>
+		</action>
+		
+		<action name="updatePromozione" method="updatePromozione" class="it.unisa.tsw2.actions.anagrafica.ServicePromozioneAction" > 
+			<result name="success" type="redirectAction">allPromozione</result>
+		</action>
+		
+		
+		
+		<action name="allAssicurazione" method="searchAllAssicurazione" class="it.unisa.tsw2.actions.anagrafica.ServiceAssicurazioneAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allAssicurazione.jsp</result>
+		</action>
+		
+		<action name="searchAssicurazioneByNome_assicurazione" method="searchAssicurazioneByNome_assicurazione" class="it.unisa.tsw2.actions.anagrafica.ServiceOptionalAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchAssicurazioneByNome_assicurazione.jsp</result>
+		</action>
+		
+		<action name="searchAssicurazioneByExample" method="searchAssicurazioneByExample" class="it.unisa.tsw2.actions.anagrafica.ServiceAssicurazioneAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allAssicurazione.jsp</result>
+		</action>
+		
+		<action name="campiAssicurazione" class="it.unisa.tsw2.actions.anagrafica.CampiAssicurazioneAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/campiAssicurazione.jsp</result>
+		</action>
+		
+		<action name="newAssicurazione" method="insertAssicurazione" class="it.unisa.tsw2.actions.anagrafica.ServiceAssicurazioneAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allAssicurazione</result>
+		</action>
+		
+		<action name="deleteAssicurazione" method="deleteAssicurazione" class="it.unisa.tsw2.actions.anagrafica.ServiceAssicurazioneAction" > 
+			<result name="success" type="redirectAction">allAssicurazione</result>
+		</action>
+		
+		<action name="updateAssicurazione" method="updateAssicurazione" class="it.unisa.tsw2.actions.anagrafica.ServiceAssicurazioneAction" > 
+			<result name="success" type="redirectAction">allAssicurazione</result>
+		</action>
+		
+	
+		
+		<action name="allPratica" method="searchAllPratica" class="it.unisa.tsw2.actions.anagrafica.ServicePraticaAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allPratica.jsp</result>
+		</action>
+		
+		<action name="searchPraticaByNome_pratica" method="searchPraticaByNome_pratica" class="it.unisa.tsw2.actions.anagrafica.ServicePraticaAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchPraticaByNome_pratica.jsp</result>
+		</action>
+		
+		<action name="searchPraticaByExample" method="searchPraticaByExample" class="it.unisa.tsw2.actions.anagrafica.ServicePraticaAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allPratica.jsp</result>
+		</action>
+		
+		<action name="campiPratica" class="it.unisa.tsw2.actions.anagrafica.CampiPraticaAction">
+			<result name="success" >/WEB-INF/jsp/anagrafica/campiPratica.jsp</result>
+		</action>
+		
+		<action name="newPratica" method="insertPratica" class="it.unisa.tsw2.actions.anagrafica.ServicePraticaAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allPratica</result>
+		</action>
+		
+		<action name="deletePratica" method="deletePratica" class="it.unisa.tsw2.actions.anagrafica.ServicePraticaAction" > 
+			<result name="success" type="redirectAction">allPratica</result>
+		</action>
+		
+		<action name="updatePratica" method="updatePratica" class="it.unisa.tsw2.actions.anagrafica.ServicePraticaAction" > 
+			<result name="success" type="redirectAction">allPratica</result>
+		</action>
+		
+		
+		
+		<action name="allVeicolo" method="searchAllVeicolo" class="it.unisa.tsw2.actions.anagrafica.ServiceVeicoloAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allVeicolo.jsp</result>
+		</action>
+		
+		<action name="searchVeicoloByNome_veicolo" method="searchVeicoloByNome_veicolo" class="it.unisa.tsw2.actions.anagrafica.ServiceVeicoloAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchVeicoloByNome_veicolo.jsp</result>
+		</action>
+		
+		<action name="searchVeicoloByExample" method="searchVeicoloByExample" class="it.unisa.tsw2.actions.anagrafica.ServiceVeicoloAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allVeicolo.jsp</result>
+		</action>
+		
+		<action name="campiVeicolo" class="it.unisa.tsw2.actions.anagrafica.CampiVeicoloAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/campiVeicolo.jsp</result>
+		</action>
+		
+		<action name="newVeicolo" method="insertVeicolo" class="it.unisa.tsw2.actions.anagrafica.ServiceVeicoloAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allVeicolo</result>
+		</action>
+		
+		<action name="deleteVeicolo" method="deleteVeicolo" class="it.unisa.tsw2.actions.anagrafica.ServiceVeicoloAction" > 
+			<result name="success" type="redirectAction">allVeicolo</result>
+		</action>
+		
+		<action name="updateVeicolo" method="updateVeicolo" class="it.unisa.tsw2.actions.anagrafica.ServiceVeicoloAction" > 
+			<result name="success" type="redirectAction">allVeicolo</result>
+		</action>
+		
+		
+		
+		<action name="allCliente" method="searchAllCliente" class="it.unisa.tsw2.actions.anagrafica.ServiceClienteAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allCliente.jsp</result>
+		</action>
+		
+		<action name="searchClienteByCF_cliente" method="searchClienteByCF_cliente" class="it.unisa.tsw2.actions.anagrafica.ServiceClienteAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchClienteByNome_cliente.jsp</result>
+		</action>
+		
+		<action name="searchClienteByExample" method="searchClienteByExample" class="it.unisa.tsw2.actions.anagrafica.ServiceClienteAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allCliente.jsp</result>
+		</action>
+		
+		<action name="campiCliente" class="it.unisa.tsw2.actions.anagrafica.CampiClienteAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/campiCliente.jsp</result>
+		</action>
+		
+		<action name="newCliente" method="insertCliente" class="it.unisa.tsw2.actions.anagrafica.ServiceClienteAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allCliente</result>
+		</action>
+		
+		<action name="deleteCliente" method="deleteCliente" class="it.unisa.tsw2.actions.anagrafica.ServiceClienteAction" > 
+			<result name="success" type="redirectAction">allCliente</result>
+		</action>
+		
+		<action name="updateCliente" method="updateCliente" class="it.unisa.tsw2.actions.anagrafica.ServiceClienteAction" > 
+			<result name="success" type="redirectAction">allCliente</result>
+		</action>
+		
+	
+		
+		<action name="allStaff" method="searchAllStaff" class="it.unisa.tsw2.actions.anagrafica.ServiceStaffAction"> 
+			<result name="success" >/WEB-INF/jsp/anagrafica/allStaff.jsp</result>
+		</action>
+		
+		<action name="searchStaffByCF_staff" method="searchStaffByCF_staff" class="it.unisa.tsw2.actions.anagrafica.ServiceStaffAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/searchStaffByNome_staff.jsp</result>
+		</action>
+		
+		<action name="searchStaffByExample" method="searchStaffByExample" class="it.unisa.tsw2.actions.anagrafica.ServiceStaffAction"> 
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/allStaff.jsp</result>
+		</action>
+		
+		<action name="campiStaff" class="it.unisa.tsw2.actions.anagrafica.CampiStaffAction">
+			<result name="success" type="dispatcher">/WEB-INF/jsp/anagrafica/campiStaff.jsp</result>
+		</action>
+		
+		<action name="newStaff" method="insertStaff" class="it.unisa.tsw2.actions.anagrafica.ServiceStaffAction" >
+			<interceptor-ref name="paramsPrepareParamsStack" />
+			<result name="success" type="redirectAction">allStaff</result>
+		</action>
+		
+		<action name="deleteStaff" method="deleteStaff" class="it.unisa.tsw2.actions.anagrafica.ServiceStaffAction" > 
+			<result name="success" type="redirectAction">allStaff</result>
+		</action>
+		
+		<action name="updateStaff" method="updateStaff" class="it.unisa.tsw2.actions.anagrafica.ServiceStaffAction" > 
+			<result name="success" type="redirectAction">allStaff</result>
+		</action>
+		
+		
+	</package> 
+		
+    
+		
+</struts>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it.unisa.tsw2.domain.Assicurazione" table="ASSICURAZIONE">
+	
+		<id name="idAssicurazione" column="ID_ASSICURAZIONE">
+			<generator class="native"/>
+		</id>
+		<property name="nome" type="string" column="NOME_ASSICURAZIONE" unique="true" not-null="true"/>
+		<property name="descrizione" type="string" column="DESCRIZIONE_ASSICURAZIONE"/>
+		<property name="costo" type="integer" column="COSTO_ASSICURAZIONE"/>
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<set name="prenotazioni" table="ASSICURAZIONE_PRENOTAZIONE" lazy="true" cascade="save-update">
+        	<key column="FKID_ASSICURAZIONE"/>
+        	<many-to-many class="it.unisa.tsw2.domain.Prenotazione" column="FKID_PRENOTAZIONE"/>
+        </set>
+		
+	</class>
+</hibernate-mapping>

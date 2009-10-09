@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class name="it.unisa.tsw2.domain.Veicolo" table="VEICOLO">
+	
+		<id name="idVeicolo" column="ID_VEICOLO">
+			<generator class="native"/>
+		</id>
+		<property name="nome" type="string" column="NOME_VEICOLO" unique="true" />
+		<property name="tipo" type="string" column="TIPO_VEICOLO"/>
+		<property name="descrizione" type="string" column="DESCRIZIONE_VEICOLO"/>
+		<property name="nposti" type="integer" column="NPOSTI_VEICOLO"/>
+		<property name="cilindrata" type="integer" column="CILINDRATA_VEICOLO"/>
+		<property name="disponibile" type="true_false" column="DISPONIBILE_VEICOLO"/>
+		<property name="immatricolazione" type="date" column="IMMATRICOLAZIONE_VEICOLO"/>
+		<property name="cambio" type="string" column="CAMBIO_VEICOLO"/>
+		<property name="alimentazione" type="string" column="ALIMENTAZIONE_VEICOLO"/>
+		<property name="portata" type="integer" column="PORTATA_VEICOLO"/>
+		<property name="bagagliaio" type="integer" column="BAGAGLIAIO_VEICOLO"/>
+		<property name="targa" type="string" column="TARGA_VEICOLO"/>
+		<property name="portrait" type="java.sql.Blob" column="FOTO"/>
+		
+		
+		<!-- mappiamo ora le associazioni -->
+		
+		<many-to-one name="categoria" column="FKID_CATEGORIA" class="it.unisa.tsw2.domain.Categoria" not-null="false" cascade="save-update"/>
+		<many-to-one name="sede" column="FKID_SEDE" class="it.unisa.tsw2.domain.Sede" not-null="false" cascade="save-update"/>
+		
+		<set name="prenotazioni" table="PRENOTAZIONE" inverse="true" cascade="save-update" lazy="true">
+        	<key column="FKID_VEICOLO"/>
+        	<one-to-many class="it.unisa.tsw2.domain.Prenotazione"/>
+        </set>
+        
+        <set name="pratiche" table="PRATICA" inverse="true" lazy="true" cascade="save-update">
+        	<key column="FKID_VEICOLO"/>
+        	<one-to-many class="it.unisa.tsw2.domain.Pratica" />
+        </set>
+        
+        
+        <set name="optionals" table="OPTIONAL_VEICOLO" lazy="true" cascade="save-update">
+        	<key column="FKID_VEICOLO"/>
+        	<many-to-many class="it.unisa.tsw2.domain.Optional" column="FKID_OPTIONAL"/>
+        </set>
+        
+        	
+		
+	</class>
+</hibernate-mapping>
