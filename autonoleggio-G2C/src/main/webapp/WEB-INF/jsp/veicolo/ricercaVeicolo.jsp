@@ -14,12 +14,6 @@
 <h3> Ricerca </h3>
 
 
-<s:hidden name="ord" value="%{ord}" />
-<s:hidden name="campoOrd" value="%{campoOrd}" />
-<s:hidden name="pagina" value="" />
-<s:hidden name="ricerca" value="si" />
-
-
 <script src="http://italian.jotform.com/js/form.js?v2.0.998" type="text/javascript"></script>
 <table width="100%" cellpadding="2" cellspacing="0" >
 <tr>
@@ -30,7 +24,7 @@
 <tr>
 	<td class="midleft" width="10">&nbsp;&nbsp;&nbsp;</td>
 	<td class="midmid" valign="top">
-		<s:form  action="ricercaVeicolo"  method="post" name="q_form_92501751173" >
+		<s:form  action="ricercaVeicolo"  method="post" name="formRicerca" >
 			<input type="hidden" name="formID" value="92501751173" />
 			<div id="main" > 
 				<div class="pagebreak"> 
@@ -72,6 +66,11 @@
  						
  						<tr><td class="left" ><s:textfield  name="alimentazione" key="veicolo.alimentazione"/></td></tr>
  						
+ 						<s:hidden name="ord" value="%{ord}" />
+						<s:hidden name="campoOrd" value="%{campoOrd}" />
+						<s:hidden name="pagina" value="" />
+						<s:hidden name="ricerca" value="si" />
+ 						
  						<tr >
  							<td width="150" class="left" >&nbsp;</td>
   							<td class="right"><s:submit key="veicolo.ricerca" name="veicolo_ricerca"/></td>
@@ -90,7 +89,7 @@
 </tr>
 </table>
 <script type="text/javascript">
-validate("q_form_92501751173");
+validate("formRicerca");
 </script>
 
 
@@ -100,33 +99,44 @@ validate("q_form_92501751173");
  <table  class="tabellaVeicolo"  >  
 
    <tr class="tabListaVeicoloHeader">
-<th width="20">&nbsp;&nbsp;&nbsp;</th>
-<th width="50">&nbsp;&nbsp;&nbsp;</th>
 
-<th >
+<th width="110">
+<s:text name="veicolo.foto"/>
+</th>
+
+<th width="85" align="center">
 <s:text name="veicolo.nome"/>
-<img onclick="ordina('nome','up');" src="../images/up.gif" width="10" height="10" />
-<img onclick="ordina('nome','dw');"  src="../images/down.gif" width="10" height="10" />
+<br><img onclick="ordina('nome','up');" src="../images/up.png" width="10" height="10" />
+<img onclick="ordina('nome','dw');"  src="../images/down.png" width="10" height="10" /></br>
 </th>
 
-<th >
-<s:text name="veicolo.descrizione"/>
-<img onclick="ordina('descrizione','up');"  src="../images/up.gif" width="10" height="10" />
-<img onclick="ordina('descrizione','dw');"  src="../images/down.gif" width="10" height="10" />
-</th>
-
-<th >
+<th width="85" align="center">
 <s:text name="veicolo.tipo"/>
-<img onclick="ordina('tipo','up');" src="../images/up.gif" width="10" height="10" />
-<img onclick="ordina('tipo','dw');" src="../images/down.gif" width="10" height="10" />
+<br><img onclick="ordina('tipo','up');" src="../images/up.png" width="10" height="10" />
+<img onclick="ordina('tipo','dw');" src="../images/down.png" width="10" height="10" /></br>
 </th>
 
-<th>
-<s:text name="veicolo.cambio"/>
-<img onclick="ordina('cambio','up');" src="../images/up.gif" width="10" height="10" />
-<img onclick="ordina('cambio','dw');" src="../images/down.gif" width="10" height="10" />
+<th width="85" align="center">
+<s:text name="veicolo.alimentazione"/>
+<br><img onclick="ordina('tipo','up');" src="../images/up.png" width="10" height="10" />
+<img onclick="ordina('tipo','dw');" src="../images/down.png" width="10" height="10" /></br>
 </th>
-<th width="5" colspan="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+
+<th width="85" align="center">
+<s:text name="veicolo.cambio" />
+<br><img onclick="ordina('cambio','up');" src="../images/up.png" width="10" height="10" />
+<img onclick="ordina('cambio','dw');" src="../images/down.png" width="10" height="10" /></br>
+</th>
+
+<th width="85" align="center">
+<s:text name="veicolo.nposti"/>
+<br><img onclick="ordina('cambio','up');" src="../images/up.png" width="10" height="10" />
+<img onclick="ordina('cambio','dw');" src="../images/down.png" width="10" height="10" /></br>
+</th>
+
+<th width="20" align="center"/>
+<th width="20" align="center"/>
+
 </tr> 
 
  
@@ -136,38 +146,35 @@ validate("q_form_92501751173");
 			
 			<!-- 	<td width="5%"> <s:property value="id" /> </td> -->
 
-				<td width="120">
+				<td width="110">
 				<s:url escapeAmp="false" id="image"  action="getImmagine.action"  > <s:param  name="idV" value="veicoli[#stato.index].idVeicolo" /></s:url>
-				<img src="<s:property  value="%{image}" />" alt=""  width="100" height="100" /> 
+				<img src="<s:property  value="%{image}" />" alt=""  width="100" height="80" /> 
 				</td>
 				
-				<td width="150"><s:property value="veicoli[#stato.index].nome" /></td>
-				<td width="150"><s:property value="veicoli[#stato.index].descrizione" /></td>
-				<td width="50"><s:property value="veicoli[#stato.index].tipo" /></td>
-				<td width="50"><s:property value="veicoli[#stato.index].cambio" /></td>
+				<td width="85" align="center"><s:property value="veicoli[#stato.index].nome" /></td>
+				<td width="85" align="center"><s:property value="veicoli[#stato.index].tipo" /></td>
+				<td width="85" align="center"><s:property value="veicoli[#stato.index].alimentazione" /></td>
+				<td width="85" align="center"><s:property value="veicoli[#stato.index].cambio" /></td>
+				<td width="85" align="center"><s:property value="veicoli[#stato.index].nposti" /></td>
 				
-				<td width="20"> <s:url id="modUrlId"  action="NuovaVoceMenu">
-					<s:param name="id" value="veicoli[#stato.index].id" />
-				</s:url>
-				<s:a  href="%{modUrlId}"><img src="../images/edit.png" /></s:a>
-				</td>
 				
 				<!--  visualizza veicolo -->
 				<td width="20">
-				<s:url  id="testUrlId"  action="MostraVeicolo" >
+				<s:url  id="testUrlId"  action="mostraVeicolo" namespace="/veicolo">
 					<s:param name="idV" value="veicoli[#stato.index].idVeicolo" />
 				</s:url> 
-				<s:a  href="%{testUrlId}"> <img src="../images/browse2.png" /></s:a>
+				<s:a  href="%{testUrlId}"> <img src="../images/search.png"  width="20" height="20"/></s:a>
 				</td>
 				
 				<!--  elimina veicolo -->
 				<td width="20"><s:url id="testUrlId_"  action="EliminaVoceMenu">
 					<s:param name="id" value="menu[#stato.index].idVeicolo" />
 				</s:url> 
-				<s:a  href="javascript:deleteElement('%{menu[#stato.index].descrizione}','%{testUrlId_}');" > <img src="../images/supprime.gif" width="16" height="16" /> </s:a>
+				<s:a  href="javascript:deleteElement('%{menu[#stato.index].descrizione}','%{testUrlId_}');" > <img src="../images/cancel.png" width="20" height="20" /> </s:a>
 				</td>
 
 			</tr>
+			
 	</s:iterator>
  
  			<tr>
@@ -178,13 +185,13 @@ validate("q_form_92501751173");
  			<s:if test="pagina>1">
  			
  		
-		    <s:a href="javascript:paginazione(%{pagina-1});" ><img  src="../images/paginasx.gif" /></s:a>
+		    <s:a href="javascript:paginazione(%{pagina-1});" ><img  src="../images/paginasx.png" width="17" height="17"/></s:a>
  			
  		</s:if>
  			
  			<s:if test="pagine>1 && pagina < pagine">
  			
-		    <s:a href="javascript:paginazione(%{pagina+1});"  > <img    src="../images/paginadx.gif" /></s:a>
+		    <s:a href="javascript:paginazione(%{pagina+1});"  > <img    src="../images/paginadx.png" width="17" height="17" /></s:a>
  			
  			</s:if>
  			

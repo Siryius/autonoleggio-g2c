@@ -568,7 +568,7 @@ font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
 font-weight: normal;
 font-size: 11px;
 color: #fff;
-width: 100%;
+width: 600px;
 background-color: #666;
 border: 0px;
 border-collapse: collapse;
@@ -598,7 +598,7 @@ border: 1px #fff solid;}
 
 	float: left;
 
-	width: 100%;
+	width: 600px;
 
 	padding: 3px;
 
@@ -614,7 +614,7 @@ border: 1px #fff solid;}
 
 	float: left;
 
-	width: 100%;
+	width: 600px;
 
 	padding: 3px;
 
