@@ -11,9 +11,6 @@
 
 
 
-<h3> Ricerca </h3>
-
-
 <script src="http://italian.jotform.com/js/form.js?v2.0.998" type="text/javascript"></script>
 <table width="100%" cellpadding="2" cellspacing="0" >
 <tr>
@@ -41,7 +38,7 @@
     					<td width="20" height="20" style="background-image:url('http://italian.jotform.com/images/splitter_left.gif')"></td>
     					<td style="background-image:url('http://italian.jotform.com/images/splitter_mid.gif')">
      						<div class="pagebreak">
-       							<label>Campi Ricerca&nbsp;</label>
+       							<label>Ricerca Veicolo&nbsp;</label>
      						</div>
     					</td>
     					<td id="td_q8" width="20" style="background-image:url('http://italian.jotform.com/images/splitter_right_show.gif')"></td>
@@ -72,8 +69,8 @@
 						<s:hidden name="ricerca" value="si" />
  						
  						<tr >
- 							<td width="150" class="left" >&nbsp;</td>
-  							<td class="right"><s:submit key="veicolo.ricerca" name="veicolo_ricerca"/></td>
+ 							<td class="left" ><s:reset key="button.reset" name="veicolo_reset"/></td>
+  							<td class="right"><s:submit key="button.search" name="veicolo_ricerca"/></td>
  						</tr>
 					</table>
 				</div>
@@ -205,7 +202,7 @@ validate("formRicerca");
 </s:else>
 
 						<s:url id="addVeicoloFlow" action="addVeicoloFlow" namespace="/veicolo" />
-						<li><s:a href="%{addVeicoloFlow}">Inserisci Veicolo</s:a></li>
-
+						
+						<br><s:a href="%{addVeicoloFlow}"><button type="button">Inserisci Nuovo Veicolo</button></s:a>
 </body>
 </html>

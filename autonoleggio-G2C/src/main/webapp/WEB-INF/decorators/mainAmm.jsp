@@ -102,7 +102,7 @@
 						<li><s:a href="%{allPromozione}">Promozioni</s:a></li>
 						
 						<s:url id="ricercaVeicolo" action="ricercaVeicolo" namespace="/veicolo" />
-						<li><s:a href="%{ricercaVeicolo}">Ricerca Veicolo</s:a></li>
+						<li><s:a href="%{ricercaVeicolo}">Veicolo</s:a></li>
 						
 	
 					</ul>
@@ -145,12 +145,12 @@
 function ordina(campoOrd,ord){ 
   document.formRicerca.campoOrd.value=campoOrd;
   document.formRicerca.ord.value=ord;
-  document.formRicerca.bottone.click();
+  document.formRicerca.veicolo_ricerca.click();
 } 
 
 function paginazione(val){ 
 	  document.formRicerca.pagina.value=val;
-	  document.formRicerca.bottone.click();
+	  document.formRicerca.veicolo_ricerca.click();
 }
 
 </script>
